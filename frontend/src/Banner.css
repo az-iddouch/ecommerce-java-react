@@ -13,3 +13,46 @@
     padding-bottom: 50px;
     width: 300px;
 }
+
+.banner__info > button {
+    background-color: var(--color-accent);
+    text-transform: inherit;
+    color: white;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.banner__info > button:hover {
+    color: var(--color-accent);
+    background-color: white;
+
+}
+
+.banner__info > h5 {
+    margin-top: 10px;
+}
+
+.banner__search {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.banner__search-btn {
+    background-color: white !important;
+    text-transform: inherit !important;
+    color: var(--color-accent) !important;
+    font-weight: 900 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,7 @@
+:root{
+  --color-accent: #00d382;
+}
+
 * {
   margin: 0;
 }

@@ -38,7 +38,7 @@
 }
 
 .header__search-btn {
-    background-color: #00C176;
+    background-color: var(--color-accent);
     height: 34px;
     width: 34px;
     border-radius: 50%;

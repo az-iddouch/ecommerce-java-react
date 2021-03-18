@@ -1,0 +1,8 @@
+.home__section {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: 150px 150px;
+  column-gap: 10px;
+  row-gap: 15px;
+  padding: 30px;
+}
