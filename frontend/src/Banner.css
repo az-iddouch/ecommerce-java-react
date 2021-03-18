@@ -1,0 +1,15 @@
+.banner {
+    height: 60vh;
+    background: url('./images/banner.jpg') center no-repeat;
+    background-size: cover;
+}
+
+.banner__info {
+    background-color: black;
+    color: white;
+    padding-top: 28vh;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    width: 300px;
+}
