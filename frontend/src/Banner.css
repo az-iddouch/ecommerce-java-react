@@ -30,16 +30,3 @@
 .banner__info > h5 {
   margin-top: 10px;
 }
-
-.banner__search {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.banner__search-btn {
-  background-color: white !important;
-  text-transform: inherit !important;
-  color: var(--color-accent) !important;
-  font-weight: 900 !important;
-}

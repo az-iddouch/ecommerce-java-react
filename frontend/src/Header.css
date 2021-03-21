@@ -1,58 +1,67 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 100;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  width: 100%;
 }
 
 .header__logo {
-    margin-left: 80px;
-    height: 100px;
-    font-weight: 500;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
+  margin-left: 80px;
+  height: 100px;
+  font-weight: 500;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
 }
 
 .header__center {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    max-width: 295px;
-    padding: 2px;
-    height: 42px;
-    border: 1px solid lightgrey;
-    border-radius: 999px;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 295px;
+  padding: 2px;
+  height: 42px;
+  border: 1px solid lightgrey;
+  border-radius: 999px;
 }
 
-.header__center > input {
-    border: none;
-    min-width: 230px;
-    outline: none;
-    padding: 10px;
-    border-radius: 999px;
+.header__center {
+  position: relative;
+}
+
+.header__center > button {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.header__center > button > span {
+  display: flex !important;
+}
+
+.header__center > button > span > svg {
+  margin-left: auto !important;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15vw;
+  margin-right: 80px;
+}
+
+.header__search {
+  display: flex;
+  flex-direction: column;
 }
 
 .header__search-btn {
-    background-color: var(--color-accent);
-    height: 34px;
-    width: 34px;
-    border-radius: 50%;
-    margin-left: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.header__right {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 15vw;
-    margin-right: 80px;
+  background-color: white !important;
+  text-transform: inherit !important;
+  color: var(--color-accent) !important;
+  font-weight: 900 !important;
 }
