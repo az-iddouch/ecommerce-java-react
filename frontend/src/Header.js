@@ -13,7 +13,6 @@ function Header() {
       </div>
       <div className="header__center">
         <Button
-          variant="outline"
           className="header__search-btn"
           onClick={() => setShowSearch(!showSearch)}
         >

@@ -1,9 +1,13 @@
-:root{
+:root {
   --color-accent: #00d382;
 }
 
 * {
   margin: 0;
+}
+
+.content {
+  min-height: calc(85vh - 70px);
 }
 
 body {

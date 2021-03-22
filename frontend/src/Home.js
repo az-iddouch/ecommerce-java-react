@@ -3,7 +3,6 @@ import './Home.css';
 import Banner from './Banner';
 import CityCard from './CityCard';
 import ImgCard from './ImgCard';
-import Footer from './Footer.js';
 import villa from './images/villa.jpg';
 import house from './images/house.jpg';
 import studio from './images/studio.jpg';
@@ -68,7 +67,6 @@ function Home() {
           <ImgCard src={appartment} title="Appartment" />
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
