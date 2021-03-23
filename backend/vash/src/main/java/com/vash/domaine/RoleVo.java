@@ -1,5 +1,6 @@
 package com.vash.domaine;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -12,7 +13,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class RoleVo {
+public class RoleVo implements Serializable{
+	
+	private static final long serialVersionUID = 1110636648031304493L;
 	private Long id;
 	private String role;
 	

@@ -1,5 +1,6 @@
 package com.vash.domaine;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.validation.constraints.Email;
@@ -13,8 +14,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserVo {
+public class UserVo implements Serializable{
 
+	private static final long serialVersionUID = 5196377636866067347L;
 	private Long id;
 	private String firstName;
 	private String lastName;

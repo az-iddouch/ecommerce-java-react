@@ -1,5 +1,6 @@
 package com.vash.domaine;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -12,8 +13,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class TypePropertyVo {
+public class TypePropertyVo implements Serializable{
 
+	private static final long serialVersionUID = 1912186718261904077L;
 	private Long id;
 	private String type;
 

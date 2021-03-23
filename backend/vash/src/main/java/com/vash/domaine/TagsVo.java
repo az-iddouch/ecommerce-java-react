@@ -1,5 +1,6 @@
 package com.vash.domaine;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -11,8 +12,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TagsVo {
+public class TagsVo implements Serializable{
 
+	private static final long serialVersionUID = 9051539969733133906L;
 	private Long id;
 	private String nameTag;
 

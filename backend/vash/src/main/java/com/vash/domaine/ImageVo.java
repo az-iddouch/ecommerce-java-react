@@ -1,5 +1,7 @@
 package com.vash.domaine;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +11,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageVo  {
+public class ImageVo  implements Serializable{
 
+	private static final long serialVersionUID = -7788512918812029326L;
 	private Long id;
 	private String url;
 

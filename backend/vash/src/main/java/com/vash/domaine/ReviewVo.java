@@ -1,5 +1,7 @@
 package com.vash.domaine;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +11,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReviewVo {
+public class ReviewVo implements Serializable{
 	
+	
+	private static final long serialVersionUID = 4649094439891541659L;
 	private Long id;
 	private Double note;
 	private String comment;
