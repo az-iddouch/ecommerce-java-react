@@ -1,5 +1,6 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
+import SearchListing from './SearchListing';
 import './SearchPage.css';
 
 function SearchPage() {
@@ -16,6 +17,24 @@ function SearchPage() {
           <Button variant="outlined">More filters</Button>
         </div>
       </div>
+      <SearchListing
+        img="https://cdn.decorilla.com/online-decorating/wp-content/uploads/2020/05/Home-Decor-NYC-Luxurious-New-York-Apartment.jpg"
+        location="Tanger"
+        title="Stay at the spacious beautiful house"
+        description="1 guest . 1 bed . 1 shared bathroom . wifi . free parking . washing machine"
+        star={4.5}
+        price="$30 / night"
+        total="$117 total"
+      />
+      <SearchListing
+        img="https://cdn.decorilla.com/online-decorating/wp-content/uploads/2020/05/Home-Decor-NYC-Luxurious-New-York-Apartment.jpg"
+        location="Tanger"
+        title="Stay at the spacious beautiful house"
+        description="1 guest . 1 bed . 1 shared bathroom . wifi . free parking . washing machine"
+        star={4.5}
+        price="$30 / night"
+        total="$117 total"
+      />
     </div>
   );
 }
