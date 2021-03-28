@@ -15,7 +15,6 @@ public class CityConverter {
 			city = new City();
 			city.setId(cityVo.getId());
 			city.setNameCity(cityVo.getNameCity());
-			city.setAddress(AddressConverter.toBo(cityVo.getAddress()));
 			city.setCountry(CountryConverter.toBo(cityVo.getCountry()));
 		}
 
@@ -28,7 +27,6 @@ public class CityConverter {
 			cityVo = new CityVo();
 			cityVo.setId(city.getId());
 			cityVo.setNameCity(city.getNameCity());
-			cityVo.setAddress(AddressConverter.toVo(city.getAddress()));
 			cityVo.setCountry(CountryConverter.toVo(city.getCountry()));
 		}
 

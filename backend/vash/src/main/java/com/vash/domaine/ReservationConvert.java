@@ -19,8 +19,8 @@ public class ReservationConvert {
 			reservation.setDateStart(reservationVo.getDateStart());
 			reservation.setNumberPersons(reservationVo.getNumberPersons());
 			reservation.setStatus(reservationVo.getStatus());
-			reservation.setProperty(PropertyConvert.toBo(reservationVo.getProperty()));
-			reservation.setUser(UserConverter.toBo(reservationVo.getUser()));
+//			reservation.setProperty(PropertyConvert.toBo(reservationVo.getProperty()));
+//			reservation.setUser(UserConverter.toBo(reservationVo.getUser()));
 		}
 
 		return reservation;
@@ -35,8 +35,8 @@ public class ReservationConvert {
 			reservationVo.setDateStart(reservation.getDateStart());
 			reservationVo.setNumberPersons(reservation.getNumberPersons());
 			reservationVo.setStatus(reservation.getStatus());
-			reservationVo.setProperty(PropertyConvert.toVo(reservation.getProperty()));
-			reservationVo.setUser(UserConverter.toVo(reservation.getUser()));
+//			reservationVo.setProperty(PropertyConvert.toVo(reservation.getProperty()));
+//			reservationVo.setUser(UserConverter.toVo(reservation.getUser()));
 		}
 
 		return reservationVo;

@@ -30,7 +30,7 @@ public class PropertyConvert {
 			property.setTags(TagsConverter.toListBo(propertyVo.getTags()));
 			property.setTypeProperty(TypePropertyConverter.toBo(propertyVo.getTypeProperty()));
 			property.setUser(UserConverter.toBo(propertyVo.getUser()));
-			
+			property.setCity(CityConverter.toBo(propertyVo.getCity()));
 			
 		}
 
@@ -57,7 +57,7 @@ public class PropertyConvert {
 			propertyVo.setTags(TagsConverter.toListVo(property.getTags()));
 			propertyVo.setTypeProperty(TypePropertyConverter.toVo(property.getTypeProperty()));
 			propertyVo.setUser(UserConverter.toVo(property.getUser()));
-			
+			propertyVo.setCity(CityConverter.toVo(property.getCity()));
 			
 		}
 

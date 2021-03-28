@@ -1,6 +1,7 @@
 package com.vash.domaine;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,4 +22,6 @@ public class CityVo implements Serializable{
 	private AddressVo address;
 	
 	private CountryVo country;
+	
+	private List<PropertyVo> propertyVos;
 }

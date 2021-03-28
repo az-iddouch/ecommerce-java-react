@@ -16,9 +16,9 @@ public class ImageConverter {
 			image = new Image();
 			image.setId(imageVo.getId());
 			image.setUrl(imageVo.getUrl());
-			image.setProperty(PropertyConvert.toBo(imageVo.getProperty()));
-			image.setUser(UserConverter.toBo(imageVo.getUser()));
-			image.setTag(TagsConverter.toBo(imageVo.getTag()));
+			//image.setProperty(PropertyConvert.toBo(imageVo.getProperty()));
+			//image.setUser(UserConverter.toBo(imageVo.getUser()));
+			//image.setTag(TagsConverter.toBo(imageVo.getTag()));
 		}
 
 		return image;
@@ -31,9 +31,9 @@ public class ImageConverter {
 			imageVo = new ImageVo();
 			imageVo.setId(image.getId());
 			imageVo.setUrl(image.getUrl());
-			imageVo.setProperty(PropertyConvert.toVo(image.getProperty()));
-			imageVo.setUser(UserConverter.toVo(image.getUser()));
-			imageVo.setTag(TagsConverter.toVo(image.getTag()));
+//			imageVo.setProperty(PropertyConvert.toVo(image.getProperty()));
+//			imageVo.setUser(UserConverter.toVo(image.getUser()));
+//			imageVo.setTag(TagsConverter.toVo(image.getTag()));
 		}
 
 		return imageVo;

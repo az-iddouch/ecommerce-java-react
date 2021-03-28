@@ -17,7 +17,7 @@ public class PropertyVo  implements Serializable{
 	private static final long serialVersionUID = 2800576072596357792L;
 	private Long id;
 	private String description;
-	private String price;
+	private Double price;
 	private Boolean equiped;
 	private String surface;
 	private Integer numberRoom;
@@ -39,5 +39,5 @@ public class PropertyVo  implements Serializable{
 
 	private List<ReviewVo> reviews;
 	
-	
+	private CityVo city;
 }

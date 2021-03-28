@@ -31,7 +31,7 @@ public class Property implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String description;
-	private String price;
+	private Double price;
 	private Boolean equiped;
 	private String surface;
 	private Integer numberRoom;
@@ -64,4 +64,8 @@ public class Property implements Serializable {
 
 	@OneToMany(mappedBy = "property")
 	private List<Review> reviews;
+	
+	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey(name="fk_property_city"))
+	private City city;
 }

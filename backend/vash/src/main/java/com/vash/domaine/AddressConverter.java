@@ -15,8 +15,7 @@ public class AddressConverter {
 			address=new Address();
 			address.setId(addressVo.getId());
 			address.setAddress(addressVo.getAddress());
-			address.setCity(CityConverter.toBo(addressVo.getCity()));
-			address.setProperty(PropertyConvert.toBo(addressVo.getProperty()));
+		//	address.setProperty(PropertyConvert.toBo(addressVo.getProperty()));
 			
 		}
 		return address;
@@ -28,8 +27,7 @@ public class AddressConverter {
 			addressVo=new AddressVo();
 			addressVo.setId(address.getId());
 			addressVo.setAddress(address.getAddress());
-			addressVo.setCity(CityConverter.toVo(address.getCity()));
-			addressVo.setProperty(PropertyConvert.toVo(address.getProperty()));
+		//	addressVo.setProperty(PropertyConvert.toVo(address.getProperty()));
 		}
 		return addressVo;
 	}
