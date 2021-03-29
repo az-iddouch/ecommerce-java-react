@@ -1,6 +1,6 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
-import SearchListing from './SearchListing';
+import SearchListing from '../components/SearchListing';
 import './SearchPage.css';
 
 function SearchPage() {

@@ -1,12 +1,12 @@
 import React from 'react';
 import './Home.css';
-import Banner from './Banner';
-import CityCard from './CityCard';
-import ImgCard from './ImgCard';
-import villa from './images/villa.jpg';
-import house from './images/house.jpg';
-import studio from './images/studio.jpg';
-import appartment from './images/appartment.jpg';
+import Banner from '../components/Banner';
+import CityCard from '../components/CityCard';
+import ImgCard from '../components/ImgCard';
+import villa from '../images/villa.jpg';
+import house from '../images/house.jpg';
+import studio from '../images/studio.jpg';
+import appartment from '../images/appartment.jpg';
 
 function Home() {
   return (

@@ -25,7 +25,8 @@ function Header() {
         <div className="header__search">{showSearch && <Search />}</div>
       </div>
       <div className="header__right">
-        <p>Become a host</p>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
         <Avatar />
       </div>
     </div>

@@ -7,6 +7,7 @@
   background-color: white;
   z-index: 100;
   width: 100%;
+  box-shadow: -2px 6px 15px -6px rgba(0, 0, 0, 0.1);
 }
 
 .header__logo {
@@ -55,8 +56,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 15vw;
+  width: 12vw;
   margin-right: 80px;
+}
+
+.header__right > a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.2s;
+}
+
+.header__right > a:hover {
+  color: var(--color-accent);
 }
 
 .header__search {

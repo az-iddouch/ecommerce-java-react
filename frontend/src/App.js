@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './Home';
-import Header from './Header';
+import Home from './pages/Home';
+import Header from './components/Header';
 import './App.css';
-import Footer from './Footer';
-import SearchPage from './SearchPage';
+import Footer from './components/Footer';
+import SearchPage from './pages/SearchPage';
+import Listing from './pages/Listing';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/search">
             <SearchPage />
+          </Route>
+          <Route path="/listings/:id">
+            <Listing />
           </Route>
         </Switch>
         <Footer />
