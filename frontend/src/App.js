@@ -8,30 +8,42 @@ import SearchPage from './pages/SearchPage';
 import Listing from './pages/Listing';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
         <Switch>
           <Route exact path="/">
+            <Header />
             <Home />
+            <Footer />
           </Route>
           <Route path="/search">
+            <Header />
             <SearchPage />
+            <Footer />
           </Route>
           <Route path="/listings/:id">
+            <Header />
             <Listing />
+            <Footer />
           </Route>
           <Route path="/login">
+            <Header />
             <Login />
+            <Footer />
           </Route>
           <Route path="/register">
+            <Header />
             <Register />
+            <Footer />
+          </Route>
+          <Route exact path="/dashboard">
+            <Dashboard />
           </Route>
         </Switch>
-        <Footer />
       </Router>
     </div>
   );
