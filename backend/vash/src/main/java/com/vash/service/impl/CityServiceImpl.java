@@ -41,10 +41,10 @@ public class CityServiceImpl implements ICityService {
 	}
 
 	@Override
-	public Map<CityVo, Integer> countPropertyByCity() {
+	public Map<CityVo, Integer> countPropertyByCity(String nameCountry) {
 		Map<CityVo, Integer> maps = new HashMap<CityVo, Integer>();
 		List<CityVo> cityVos = new ArrayList<CityVo>();
-		cityVos = findAll();
+		cityVos = findByCountryNameCountry(nameCountry);
 		if (!ObjectUtils.isEmpty(cityVos)) {
 			for (CityVo cityVo : cityVos) {
 				maps.put(cityVo, iPropertyService.countPropertyInCity(cityVo));

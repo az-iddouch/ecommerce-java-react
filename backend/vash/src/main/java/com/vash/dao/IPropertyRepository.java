@@ -11,4 +11,5 @@ public interface IPropertyRepository extends JpaRepository<Property, Long>{
 	List<Property> findByUserUserName(String userName);
 	List<Property> findByCityNameCity(String nameCity);
 	List<Property> findByCityNameCityAndVisibleTrue(String nameCity);
+	List<Property> findByCityNameCityAndVisibleTrueAndNumberMaxPersons(String nameCity,Integer numberMaxPersons);
 }

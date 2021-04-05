@@ -1,5 +1,6 @@
 package com.vash.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,6 +61,25 @@ public class PropertyServiceImpl implements IPropertyService {
 	@Override
 	public List<PropertyVo> findByCityNameCityAndVisibleTrue(String nameCity) {
 		return PropertyConvert.toListVo(iPropertyRepository.findByCityNameCityAndVisibleTrue(nameCity));
+	}
+
+	@Override
+	public List<PropertyVo> findByCityNameCityAndVisibleTrueAndNumberMaxPersons(String nameCity,
+			Integer numberMaxPersons) {
+		return  PropertyConvert.toListVo(iPropertyRepository.findByCityNameCityAndVisibleTrueAndNumberMaxPersons(nameCity,numberMaxPersons));
+	}
+
+	@Override
+	public List<PropertyVo> findByCityNameCityAndVisibleTrueAndBetweenDate(String nameCity, Date dateStart,
+			Date dateEnd) {
+		
+		return null;
+	}
+
+	@Override
+	public List<PropertyVo> findByCityNameCityAndVisibleTrueAndNumberMaxPersonsBetweenDate(String nameCity,
+			Integer numberMaxPersons, Date dateStart, Date dateEnd) {
+		return null;
 	}
 	
 

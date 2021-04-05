@@ -10,7 +10,7 @@ public interface ICityService {
 	CityVo save(CityVo cityVo);
 	List<CityVo> findAll();
 	List<CityVo> findByNameCityIgnoreCaseContaining(String namecity);
-	Map<CityVo,Integer> countPropertyByCity();
+	Map<CityVo,Integer> countPropertyByCity(String nameCountry);
 	CityVo findByNameCityIgnoreCase(String namecity);
 	
 	List<CityVo> findByCountryNameCountry(String nameCountry);
