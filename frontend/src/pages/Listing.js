@@ -14,14 +14,18 @@ import { Gallery, Item } from 'react-photoswipe-gallery';
 import 'photoswipe/dist/photoswipe.css';
 import 'photoswipe/dist/default-skin/default-skin.css';
 import './Listing.css';
+import { Button, TextField } from '@material-ui/core';
 
 function Listing() {
-  const [selectedDate, setSelectedDate] = useState(
-    new Date('2014-08-18T21:11:54')
-  );
+  const [selectedDateStart, setSelectedDateStart] = useState(new Date());
+  const [selectedDateEnd, setSelectedDateEnd] = useState(new Date());
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  const handleStartDateChange = (date) => {
+    setSelectedDateStart(date);
+  };
+
+  const handleEndDateChange = (date) => {
+    setSelectedDateEnd(date);
   };
   return (
     <div className="listing content">
@@ -120,6 +124,7 @@ function Listing() {
             accusantium similique ea sed dolorem cupiditate dolores molestiae
             nihil facilis. Porro at optio voluptas esse? Iusto quisquam
           </p>
+          <hr />
           <ul>
             <li>
               <CropOutlinedIcon />
@@ -138,6 +143,11 @@ function Listing() {
               Equipped
             </li>
           </ul>
+          <hr />
+          <h3>Amenities</h3>
+          <p>
+            Kitchen . Lock on bedroom door . Free street parking . Essentials
+          </p>
         </div>
         <div className="listing__content--right">
           <div className="listing__content--right-card">
@@ -151,14 +161,31 @@ function Listing() {
                 format="MM/dd/yyyy"
                 margin="normal"
                 id="date-picker-inline"
-                label="Date picker inline"
-                value={selectedDate}
-                onChange={handleDateChange}
+                label="Start date"
+                value={selectedDateStart}
+                onChange={handleStartDateChange}
                 KeyboardButtonProps={{
                   'aria-label': 'change date',
                 }}
               />
             </MuiPickersUtilsProvider>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                disableToolbar
+                variant="inline"
+                format="MM/dd/yyyy"
+                margin="normal"
+                id="date-picker-inline"
+                label="End date"
+                value={selectedDateEnd}
+                onChange={handleEndDateChange}
+                KeyboardButtonProps={{
+                  'aria-label': 'change date',
+                }}
+              />
+            </MuiPickersUtilsProvider>
+            <TextField type="number" label="Number of guests" />
+            <Button>Reserve</Button>
           </div>
         </div>
       </div>

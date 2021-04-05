@@ -6,6 +6,7 @@ import './App.css';
 import Footer from './components/Footer';
 import SearchPage from './pages/SearchPage';
 import Listing from './pages/Listing';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/listings/:id">
             <Listing />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         </Switch>
         <Footer />

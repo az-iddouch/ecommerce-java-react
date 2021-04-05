@@ -50,7 +50,7 @@
 }
 
 .listing__content {
-  margin-top: 38px;
+  margin-top: 18px;
   width: 100%;
   display: flex;
 }
@@ -60,9 +60,17 @@
   padding-right: 20px;
 }
 
-.listing__content--left > h3 {
+.listing__content--left h3 {
+  margin-top: 20px;
   margin-bottom: 15px;
   font-size: 1.4em;
+}
+
+.listing__content--left hr {
+  opacity: 0.6;
+  background-color: lightgray;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 
 .listing__content--left > p {
@@ -101,4 +109,14 @@
   width: 80%;
   display: flex;
   flex-direction: column;
+}
+
+.listing__content--right-card > button {
+  background-color: var(--color-accent);
+  padding: 10px;
+  margin-top: 25px;
+}
+
+.listing__content--right-card > button:hover {
+  background-color: var(--color-accent);
 }
