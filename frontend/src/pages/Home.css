@@ -1,0 +1,24 @@
+.home__section {
+  padding: 50px 80px 30px 80px;
+}
+
+.home__section-contents {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.home__section-contents--explore {
+  grid-template-rows: 150px 150px;
+  column-gap: 20px;
+  row-gap: 30px;
+}
+
+.home__section-contents--live {
+  grid-template-rows: 150px 150px;
+  column-gap: 20px;
+  row-gap: 30px;
+}
+
+.home__section-title {
+  padding-bottom: 50px;
+}

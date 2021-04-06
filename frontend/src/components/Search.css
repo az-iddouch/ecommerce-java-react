@@ -1,0 +1,67 @@
+.search {
+  position: absolute;
+  top: 58px;
+  left: -50%;
+  height: 512px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px,
+    rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px;
+}
+
+.search__additionals {
+  left: 0;
+  top: 349px;
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  width: 559px;
+  display: flex;
+  align-items: center;
+}
+
+.search__additionals--persons,
+.search__additionals--location {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.search__additionals--location-input {
+  width: 280px;
+}
+
+.search__additionals--location {
+  padding-top: 7px;
+}
+
+.search__additionals--persons {
+  width: 36%;
+  margin-right: 25px;
+}
+
+.search__additionals--persons > h2 {
+  margin-bottom: 16px;
+}
+
+.search > input {
+  width: 539px;
+  padding: 20px;
+  position: absolute;
+  left: 0;
+  top: 396px;
+  border: none;
+  outline: none;
+}
+
+.search > button {
+  position: absolute;
+  left: 0;
+  top: 476px;
+  text-transform: inherit !important;
+  background-color: var(--color-accent);
+  color: white;
+  width: 579px;
+}
+
+.search > button:hover {
+  background-color: white;
+  color: var(--color-accent);
+}

@@ -1,0 +1,32 @@
+.banner {
+  height: 62vh;
+  background: url('../images/banner.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.banner__info {
+  background-color: black;
+  color: white;
+  padding-top: 24vh;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  width: 300px;
+  height: 31.9vh;
+}
+
+.banner__info > button {
+  background-color: var(--color-accent);
+  text-transform: inherit;
+  color: white;
+  margin-top: 20px;
+  font-weight: 600;
+}
+.banner__info > button:hover {
+  color: var(--color-accent);
+  background-color: white;
+}
+
+.banner__info > h5 {
+  margin-top: 10px;
+}
