@@ -8,4 +8,6 @@ public interface IRoleService {
 
 	RoleVo save(RoleVo roleVo);
 	List<RoleVo> findAll();
+	RoleVo findById(Long id);
+	boolean deleteById(Long id);
 }

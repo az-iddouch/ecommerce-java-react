@@ -81,6 +81,17 @@ public class PropertyServiceImpl implements IPropertyService {
 			Integer numberMaxPersons, Date dateStart, Date dateEnd) {
 		return null;
 	}
+
+	@Override
+	public boolean deleteById(Long id) {
+		boolean checked=true;
+		iPropertyRepository.deleteById(id);
+		PropertyVo propertyVo= findById(id);
+		if(!ObjectUtils.isEmpty(propertyVo)) {
+			checked=true;
+		}
+		return checked;
+	}
 	
 
 	

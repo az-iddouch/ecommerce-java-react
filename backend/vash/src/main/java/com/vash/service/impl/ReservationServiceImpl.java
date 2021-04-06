@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import com.vash.domaine.CountryVo;
 import com.vash.domaine.PropertyVo;
 import com.vash.domaine.ReservationConvert;
 import com.vash.domaine.ReservationVo;
+import com.vash.entities.Reservation;
 import com.vash.service.ICityService;
 import com.vash.service.IPropertyService;
 import com.vash.service.IReservationService;
@@ -78,6 +80,27 @@ public class ReservationServiceImpl implements IReservationService{
 			}
 		}
 		return maps;
+	}
+
+	@Override
+	public ReservationVo findById(Long id) {
+		Optional<Reservation> reservationOptional=iReservationRepository.findById(id);
+		ReservationVo reservationVo=new ReservationVo();
+		if(reservationOptional.isPresent()) {
+			reservationVo=ReservationConvert.toVo(reservationOptional.get());
+		}
+		return reservationVo;
+	}
+
+	@Override
+	public boolean deleteById(Long id) {
+		boolean checked=true;
+		iReservationRepository.deleteById(id);
+		ReservationVo reservationVo= findById(id);
+		if(!ObjectUtils.isEmpty(reservationVo)) {
+			checked=true;
+		}
+		return checked;
 	}
 
 	

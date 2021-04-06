@@ -18,5 +18,5 @@ public interface IPropertyService {
 
 	List<PropertyVo> findByCityNameCityAndVisibleTrueAndBetweenDate(String nameCity,Date dateStart,Date dateEnd);
 	List<PropertyVo> findByCityNameCityAndVisibleTrueAndNumberMaxPersonsBetweenDate(String nameCity,Integer numberMaxPersons,Date dateStart,Date dateEnd);
-
+	boolean deleteById(Long id);
 }

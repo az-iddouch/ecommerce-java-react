@@ -8,4 +8,6 @@ public interface ITagsService {
 
 	TagsVo save(TagsVo tagsVo);
 	List<TagsVo> findAll();
+	TagsVo findById(Long id);
+	boolean deleteById(Long id);
 }

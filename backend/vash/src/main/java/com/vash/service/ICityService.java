@@ -14,4 +14,6 @@ public interface ICityService {
 	CityVo findByNameCityIgnoreCase(String namecity);
 	
 	List<CityVo> findByCountryNameCountry(String nameCountry);
+	CityVo findById(Long id);
+	boolean deleteById(Long id);
 }

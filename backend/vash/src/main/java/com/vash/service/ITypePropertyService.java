@@ -8,5 +8,6 @@ public interface ITypePropertyService {
 
 	TypePropertyVo save (TypePropertyVo typePropertyVo);
 	List<TypePropertyVo> findAll();
-	
+	TypePropertyVo findById(Long id);
+	boolean deleteById(Long id);
 }

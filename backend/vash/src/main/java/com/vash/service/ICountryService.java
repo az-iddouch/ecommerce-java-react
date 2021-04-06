@@ -8,5 +8,6 @@ public interface ICountryService {
 
 	CountryVo save(CountryVo countryVo);
 	List<CountryVo> findAll();
-
+	CountryVo findById(Long id);
+	boolean deleteById(Long id);
 }

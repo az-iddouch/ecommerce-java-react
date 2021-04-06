@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.util.ObjectUtils;
 import com.vash.dao.ICityRepository;
 import com.vash.domaine.CityConverter;
 import com.vash.domaine.CityVo;
+import com.vash.entities.City;
 import com.vash.service.ICityService;
 import com.vash.service.IPropertyService;
 
@@ -62,6 +64,27 @@ public class CityServiceImpl implements ICityService {
 	@Override
 	public List<CityVo> findByCountryNameCountry(String nameCountry) {
 		return CityConverter.toListVo(iCityRepository.findByCountryNameCountry(nameCountry));
+	}
+
+	@Override
+	public CityVo findById(Long id) {
+		Optional<City> cityOptional=iCityRepository.findById(id);
+		CityVo cityVo=new CityVo();
+		if(cityOptional.isPresent()) {
+			cityVo=CityConverter.toVo(cityOptional.get());
+		}
+		return cityVo;
+	}
+
+	@Override
+	public boolean deleteById(Long id) {
+		boolean checked=true;
+		iCityRepository.deleteById(id);
+		CityVo CityVo= findById(id);
+		if(!ObjectUtils.isEmpty(CityVo)) {
+			checked=true;
+		}
+		return checked;
 	}
 
 }

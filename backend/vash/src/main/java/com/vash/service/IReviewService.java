@@ -9,4 +9,6 @@ public interface IReviewService {
 	ReviewVo save(ReviewVo reviewVo);
 
 	List<ReviewVo> findAll();
+	ReviewVo findById(Long id);
+	boolean deleteById(Long id);
 }

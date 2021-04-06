@@ -8,5 +8,6 @@ public interface IImageService {
 
 	ImageVo save(ImageVo imageVo);
 	List<ImageVo> findAll();
-
+	ImageVo findById(Long id);
+	boolean deleteById(Long id);
 }

@@ -3,6 +3,7 @@ package com.vash.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -47,7 +48,7 @@ public class Property implements Serializable {
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_property_typeProperty"))
 	private TypeProperty typeProperty;
 
-	@OneToMany(mappedBy = "property")
+	@OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
 	//@Column(name = "imageId")
 	private List<Image> images;
 
@@ -59,10 +60,10 @@ public class Property implements Serializable {
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_property_address"))
 	private Address address;
 
-	@OneToMany(mappedBy = "property")
+	@OneToMany(mappedBy = "property",cascade = CascadeType.REMOVE)
 	private List<Reservation> reservations;
 
-	@OneToMany(mappedBy = "property")
+	@OneToMany(mappedBy = "property", cascade = CascadeType.REMOVE)
 	private List<Review> reviews;
 	
 	@ManyToOne
