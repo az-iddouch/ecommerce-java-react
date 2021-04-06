@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.4.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.vash</groupId>
 	<artifactId>vash</artifactId>
@@ -69,13 +70,17 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		
+
+
 		<dependency>
- <groupId>org.springframework.boot</groupId>
- <artifactId>spring-boot-starter-aop</artifactId>
-</dependency>
-		
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -94,6 +99,70 @@
 			</plugin>
 		</plugins>
 	</build>
+
+<!-- 	<profiles> -->
+<!-- 		<profile> -->
+<!-- 			<id>local</id> -->
+<!-- 			<properties> -->
+<!-- 				<environnement>LOCAL</environnement> -->
+<!-- 				<bdd_url>jdbc:h2:file:~/saht_h2_db</bdd_url> -->
+<!-- 				<bdd_user>sa</bdd_user> -->
+<!-- 				<bdd_pwd>password</bdd_pwd> -->
+<!-- 				<bdd_drivers>org.h2.Driver</bdd_drivers> -->
+<!-- 				<bdd_show_sql>true</bdd_show_sql> -->
+<!-- 				<bdd_hibernate_dialect>org.hibernate.dialect.H2Dialect</bdd_hibernate_dialect> -->
+<!-- 				<flyway>true</flyway> -->
+<!-- 				<flyway.baselineOnMigrate>true</flyway.baselineOnMigrate> -->
+<!-- 				<bdd_hibernate_ddl>none</bdd_hibernate_ddl> -->
+<!-- 				<logging.file.path>/log/vash</logging.file.path> -->
+<!-- 			</properties> -->
+<!-- 			<build> -->
+<!-- 				<resources> -->
+<!-- 					<resource> -->
+<!-- 						<directory>${basedir}/src/main/resources</directory> -->
+<!-- 						<filtering>true</filtering> -->
+<!-- 						<excludes> -->
+<!-- 							<exclude>static/**</exclude> -->
+<!-- 						</excludes> -->
+<!-- 					</resource> -->
+<!-- 					<resource> -->
+<!-- 						<directory>${basedir}/src/main/env/ide</directory> -->
+<!-- 					</resource> -->
+<!-- 				</resources> -->
+<!-- 			</build> -->
+<!-- 		</profile> -->
+<!-- 		<profile> -->
+<!-- 			<id>dev</id> -->
+<!-- 			<properties> -->
+<!--  				<maven.test.skip>true</maven.test.skip> -->
+<!-- 				<environnement>DEVELOPPEMENT</environnement> -->
+<!-- 				<bdd_url>jdbc:postgresql://localhost:5432/vash</bdd_url> -->
+<!--                 <bdd_user>root</bdd_user> -->
+<!--                 <bdd_pwd>root</bdd_pwd> -->
+<!-- 				<bdd_drivers>org.postgresql.Driver</bdd_drivers> -->
+<!-- 				<bdd_show_sql>true</bdd_show_sql> -->
+<!-- 				<bdd_hibernate_dialect>org.hibernate.dialect.PostgreSQLDialect</bdd_hibernate_dialect> -->
+<!-- 				<flyway>true</flyway> -->
+<!-- 				<flyway.baselineOnMigrate>true</flyway.baselineOnMigrate> -->
+<!-- 				<bdd_hibernate_ddl>none</bdd_hibernate_ddl> -->
+<!-- 				<logging.file.path>/opt/log/saht</logging.file.path> -->
+<!-- 			</properties> -->
+<!-- 			<build> -->
+<!-- 				<resources> -->
+<!-- 					<resource> -->
+<!-- 						<directory>${basedir}/src/main/resources</directory> -->
+<!-- 						<filtering>true</filtering> -->
+<!-- 						<excludes> -->
+<!-- 							<exclude>static/**</exclude> -->
+<!-- 						</excludes> -->
+<!-- 					</resource> -->
+<!-- 					<resource> -->
+<!-- 						<directory>${basedir}/src/main/env/dev</directory> -->
+<!-- 					</resource> -->
+<!-- 				</resources> -->
+<!-- 			</build> -->
+<!-- 		</profile> -->
+<!-- 	</profiles> -->
 
 
 </project>

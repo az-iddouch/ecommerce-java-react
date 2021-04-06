@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Vtopeightville")
+@Table(name = "vtopeightville")
 public class VTopEightVille implements Serializable {
 
 	private static final long serialVersionUID = 6944368029270637817L;
