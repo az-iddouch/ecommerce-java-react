@@ -29,7 +29,7 @@ public class City implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nameCity;
-	
+	private String url;
 	@OneToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_city_country"))
 	private Country country;

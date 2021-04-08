@@ -37,7 +37,7 @@
 
  -- create table
  create table address (id  bigserial not null, address varchar(255), primary key (id));
- create table city (id  bigserial not null, name_city varchar(255), country_id int8, primary key (id));
+ create table city (id  bigserial not null, name_city varchar(255), country_id int8,url varchar(255) primary key (id));
  create table country (id  bigserial not null, name_country varchar(255), primary key (id));
  create table image (id  bigserial not null, url varchar(255), primary key (id));
  create table property (id  bigserial not null, description varchar(255), equiped boolean, number_max_persons int4, number_room int4, numberwc int4, price float8, surface varchar(255), visible boolean, address_id int8, city_id int8, type_property_id int8, user_id int8, primary key (id));
@@ -72,4 +72,4 @@
  
  -- create view 
  create or replace  view vtopeightville as select p.city_id,c.name_City,c.country_id, count(r.id) as counter from reservation r left join property
-p on p.id=r.property_id  left join city c on c.id=p.city_id group by p.city_id,c.name_City,c.country_id  order by counter desc limit 8
+ p on p.id=r.property_id  left join city c on c.id=p.city_id group by p.city_id,c.name_City,c.country_id  order by counter desc limit 8

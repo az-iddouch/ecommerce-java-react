@@ -13,18 +13,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vash.domaine.CityVo;
 import com.vash.service.ICityService;
 
 @RestController
+@RequestMapping(value="/api/city")
 public class CityController {
 
 	@Autowired
 	private ICityService iCityService;
 
-	@PostMapping(value = "/rest/city/save")
+	@PostMapping(value = "/save")
 	public ResponseEntity<Object> save(@RequestBody CityVo cityVo) {
 
 		CityVo cityVop = iCityService.save(cityVo);
@@ -35,7 +37,7 @@ public class CityController {
 		return new ResponseEntity<>("Yes", HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/rest/city/all")
+	@GetMapping(value = "/all")
 	public ResponseEntity<Object> findAll() {
 
 		List<CityVo> cityVos = iCityService.findAll();
@@ -46,7 +48,7 @@ public class CityController {
 		return new ResponseEntity<>(cityVos, HttpStatus.OK);
 	}
 	//findByNameCityIgnoreCaseContaining %...%
-	@GetMapping(value = "/rest/city/autocompilation")
+	@GetMapping(value = "/autocompilation")
 	public ResponseEntity<Object> findByNameCityIgnoreCaseContaining(@PathVariable (value="nameCity") String namecity) {
 		List<CityVo> cityVos =new ArrayList<CityVo>();
 		cityVos = iCityService.findByNameCityIgnoreCaseContaining(namecity);
@@ -56,7 +58,7 @@ public class CityController {
 		return new ResponseEntity<>(cityVos, HttpStatus.OK);
 	}
 // search by namecity return  CityVo
-	@GetMapping(value = "/rest/city/serachByNameCity")
+	@GetMapping(value = "/serachByNameCity")
 	public ResponseEntity<Object> findByNameCityIgnore(@PathVariable (value="nameCity") String namecity) {
 		CityVo cityVo  = iCityService.findByNameCityIgnoreCase(namecity);
 		if (ObjectUtils.isEmpty(cityVo)) {
@@ -65,7 +67,7 @@ public class CityController {
 		return new ResponseEntity<>(cityVo, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/rest/city/serachCityByNameCountry")
+	@GetMapping(value = "/serachCityByNameCountry")
 	public ResponseEntity<Object> findByCountryNameCountry(@PathVariable (value="nameCountry") String nameCountry) {
 		List<CityVo> cityVos =new ArrayList<CityVo>();
 		cityVos= iCityService.findByCountryNameCountry(nameCountry);
@@ -75,7 +77,7 @@ public class CityController {
 		return new ResponseEntity<>(cityVos, HttpStatus.OK);
 	}
 	//countPropertyByCity
-	@GetMapping(value = "/rest/city/countPropertyByCity")
+	@GetMapping(value = "/countPropertyByCity")
 	public ResponseEntity<Object> countPropertyByCity(@PathVariable (value="nameCountry") String nameCountry) {
 		Map<CityVo,Integer> maps=new HashMap<CityVo, Integer>();
 		maps= iCityService.countPropertyByCity(nameCountry);

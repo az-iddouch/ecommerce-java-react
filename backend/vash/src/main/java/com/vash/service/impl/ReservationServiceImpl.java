@@ -24,7 +24,7 @@ import com.vash.service.IReservationService;
 
 @Service
 @Transactional
-public class ReservationServiceImpl implements IReservationService{
+public class ReservationServiceImpl implements IReservationService {
 
 	@Autowired
 	private IReservationRepository iReservationRepository;
@@ -32,7 +32,7 @@ public class ReservationServiceImpl implements IReservationService{
 	private IPropertyService iPropertyService;
 	@Autowired
 	private ICityService iCityService;
-	
+
 	@Override
 	public ReservationVo save(ReservationVo reservationVo) {
 		return ReservationConvert.toVo(iReservationRepository.save(ReservationConvert.toBo(reservationVo)));
@@ -48,22 +48,23 @@ public class ReservationServiceImpl implements IReservationService{
 		return ReservationConvert.toListVo(iReservationRepository.findByPropertyId(idProperty));
 	}
 
-	
 	@Override
 	public Integer countReservationByProperty(CityVo cityVo) {
-		Integer count=0;
-		List<PropertyVo> propertyVos=new ArrayList<PropertyVo>();
-		propertyVos=iPropertyService.findByCityNameCity(cityVo.getNameCity());
-		if(!ObjectUtils.isEmpty(propertyVos)) {
+		Integer count = 0;
+		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
+		if (ObjectUtils.isEmpty(cityVo)) {
+			propertyVos = iPropertyService.findByCityId(cityVo.getId());
+		}
+		if (!ObjectUtils.isEmpty(propertyVos)) {
 			for (PropertyVo propertyVo : propertyVos) {
-				if(!ObjectUtils.isEmpty(propertyVo) && !ObjectUtils.isEmpty(propertyVo.getReservations())) {
-					count=count+propertyVo.getReservations().size();
+				if (!ObjectUtils.isEmpty(propertyVo) && !ObjectUtils.isEmpty(propertyVo.getReservations())) {
+					count = count + propertyVo.getReservations().size();
 				}
 			}
 		}
 		return count;
 	}
-	
+
 	@Override
 	public Map<CityVo, Integer> countReservationByCity(CountryVo countryVo) {
 		Map<CityVo, Integer> maps = new HashMap<CityVo, Integer>();
@@ -84,24 +85,23 @@ public class ReservationServiceImpl implements IReservationService{
 
 	@Override
 	public ReservationVo findById(Long id) {
-		Optional<Reservation> reservationOptional=iReservationRepository.findById(id);
-		ReservationVo reservationVo=new ReservationVo();
-		if(reservationOptional.isPresent()) {
-			reservationVo=ReservationConvert.toVo(reservationOptional.get());
+		Optional<Reservation> reservationOptional = iReservationRepository.findById(id);
+		ReservationVo reservationVo = new ReservationVo();
+		if (reservationOptional.isPresent()) {
+			reservationVo = ReservationConvert.toVo(reservationOptional.get());
 		}
 		return reservationVo;
 	}
 
 	@Override
 	public boolean deleteById(Long id) {
-		boolean checked=true;
+		boolean checked = true;
 		iReservationRepository.deleteById(id);
-		ReservationVo reservationVo= findById(id);
-		if(!ObjectUtils.isEmpty(reservationVo)) {
-			checked=true;
+		ReservationVo reservationVo = findById(id);
+		if (!ObjectUtils.isEmpty(reservationVo)) {
+			checked = true;
 		}
 		return checked;
 	}
 
-	
 }
