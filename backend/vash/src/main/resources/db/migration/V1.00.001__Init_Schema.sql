@@ -37,7 +37,7 @@
 
  -- create table
  create table address (id  bigserial not null, address varchar(255), primary key (id));
- create table city (id  bigserial not null, name_city varchar(255), country_id int8,url varchar(255) primary key (id));
+ create table city (id  bigserial not null, name_city varchar(255), country_id int8,url varchar(255), primary key (id));
  create table country (id  bigserial not null, name_country varchar(255), primary key (id));
  create table image (id  bigserial not null, url varchar(255), primary key (id));
  create table property (id  bigserial not null, description varchar(255), equiped boolean, number_max_persons int4, number_room int4, numberwc int4, price float8, surface varchar(255), visible boolean, address_id int8, city_id int8, type_property_id int8, user_id int8, primary key (id));
