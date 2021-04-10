@@ -16,19 +16,58 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vash.domaine.AddressVo;
+import com.vash.domaine.CityVo;
 import com.vash.domaine.PropertyVo;
+import com.vash.domaine.TypePropertyVo;
+import com.vash.domaine.UserVo;
+import com.vash.service.ICityService;
 import com.vash.service.IPropertyService;
+import com.vash.service.ITypePropertyService;
+import com.vash.service.IUserService;
 
 @RestController
 @RequestMapping(value = "/api/property")
 public class PropertyController {
 
 	@Autowired
+	private IUserService iUserService;
+	@Autowired
+	private ICityService iCityService;
+	@Autowired
 	private IPropertyService iPropertyService;
+	@Autowired
+	private ITypePropertyService iTypePropertyService;
 	
 
-	@PostMapping(value = "/save")
-	public ResponseEntity<Object> save(@Valid @RequestBody PropertyVo propertyVo) {
+	@PostMapping(value = "/save/{userid}/")
+	public ResponseEntity<Object> save(@Valid @RequestBody String userid) {
+//		CityVo cityVo=iCityService.findById(1L);
+//		TypePropertyVo typePropertyVo=iTypePropertyService.findById(1L);
+//		//TagsVo tagsVo= iTagsService.findAllByIds(ids);
+//		UserVo userVo=new UserVo();
+//		if(!ObjectUtils.isEmpty(userid)) {
+//		userVo=iUserService.findById(Long.valueOf(userid));
+//		}
+//		AddressVo addressVo=new AddressVo();
+//		addressVo.setAddress("ssssssssss");
+		PropertyVo propertyVo =new PropertyVo();
+//		propertyVo.setAddress(addressVo);
+//		propertyVo.setTypeProperty(typePropertyVo);
+//		propertyVo.setCity(cityVo);
+//		if(!ObjectUtils.isEmpty(userVo)) {
+//		propertyVo.setUser(userVo);
+//		}
+//		propertyVo.setDescription("hhhhhhhhhhhhhhhhhhhhhh");
+//		propertyVo.setEquiped(true);
+//		propertyVo.setNumberMaxPersons(2);
+//		propertyVo.setNumberRoom(3);
+//		propertyVo.setPrice(45.60);
+//		propertyVo.setNumberWC(3);
+//		propertyVo.setSurface("120m²");
+//		propertyVo.setVisible(true);
+//		iPropertyService.save(propertyVo);
+//
 		iPropertyService.save(propertyVo);
 		return new ResponseEntity<>("Property is created successfully", HttpStatus.CREATED);
 	}

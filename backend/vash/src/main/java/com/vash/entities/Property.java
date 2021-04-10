@@ -56,7 +56,7 @@ public class Property implements Serializable {
 	//@Column(name = "tagId")
 	private List<Tags> tags;
 
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	@JoinColumn(foreignKey = @ForeignKey(name = "fk_property_address"))
 	private Address address;
 

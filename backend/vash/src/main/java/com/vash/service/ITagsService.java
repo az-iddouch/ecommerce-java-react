@@ -10,4 +10,5 @@ public interface ITagsService {
 	List<TagsVo> findAll();
 	TagsVo findById(Long id);
 	boolean deleteById(Long id);
+	List<TagsVo> findAllByIds(List<Long> ids);
 }

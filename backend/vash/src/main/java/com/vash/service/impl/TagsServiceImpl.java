@@ -51,4 +51,10 @@ private ITagsRepository iTagsRepository;
 		return checked;
 	}
 
+	@Override
+	public List<TagsVo> findAllByIds(List<Long> ids) {
+
+		return TagsConverter.toListVo(iTagsRepository.findAllById(ids));
+	}
+	
 }

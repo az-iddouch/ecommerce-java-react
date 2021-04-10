@@ -36,7 +36,7 @@ public class ReservationController {
 		reservationVo.setDateStart(dateStart);
 		reservationVo.setNumberPersons(Integer.valueOf(numberPersons));
 		reservationVo.setUser(iUserService.findById(Long.valueOf(idUser)));
-		reservationVo.setProperty(iPropertyService.findById(Long.valueOf(idUser)));
+		reservationVo.setProperty(iPropertyService.findById(Long.valueOf(idProperty)));
 		
 		if(ObjectUtils.isEmpty(iReservationService.save(reservationVo))){
 			return new ResponseEntity<>("Reservation is created successfully", HttpStatus.CREATED);
