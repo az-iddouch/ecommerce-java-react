@@ -18,6 +18,4 @@ public class RoleVo implements Serializable{
 	private static final long serialVersionUID = 1110636648031304493L;
 	private Long id;
 	private String role;
-	
-	private List<UserVo> users;
 }

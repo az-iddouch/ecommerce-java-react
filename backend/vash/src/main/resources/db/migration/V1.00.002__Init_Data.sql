@@ -1,7 +1,7 @@
 ﻿
 --table  t_role 
-insert into t_role(role) values ('admin');
-insert into t_role(role) values ('client');
+insert into t_role(role) values ('ADMIN');
+insert into t_role(role) values ('CLIENT');
 
 -- t_user
 insert into t_user(email,first_name,last_name,password,phone_number1,phone_number2,user_name) values ('jocker@gmail.com','jocker','jojo','123456','0000000978','0000000978','jocker');
@@ -85,11 +85,11 @@ insert into property(description,equiped,number_max_persons,number_room,numberwc
  values ('vue sur une piscine tropicale',true,7,4,3,3000,'1000m',true,4,3,2,3);
 
 
-insert into reservation (date_start,date_end,number_persons,status,property_id,user_id)
-values('26-04-2021','30-04-2021',3,'pending',1,3);
-insert into reservation (date_start,date_end,number_persons,status,property_id,user_id)
-values('16-04-2021','20-04-2021',3,'pending',4,2);
-insert into reservation (date_start,date_end,number_persons,status,property_id,user_id)
-values('06-05-2021','10-05-2021',3,'pending',5,2);
-insert into reservation (date_start,date_end,number_persons,status,property_id,user_id)
-values('06-04-2021','20-06-2021',3,'pending',7,3);
+-- insert into reservation (date_start,date_end,number_persons,status,property_id,user_id)
+-- values('26-04-2021','30-04-2021',3,'pending',1,3);
+-- insert into reservation (date_start,date_end,number_persons,status,property_id,user_id)
+-- values('16-04-2021','20-04-2021',3,'pending',4,2);
+-- insert into reservation (date_start,date_end,number_persons,status,property_id,user_id)
+-- values('06-05-2021','10-05-2021',3,'pending',5,2);
+-- insert into reservation (date_start,date_end,number_persons,status,property_id,user_id)
+-- values('06-04-2021','20-06-2021',3,'pending',7,3);

@@ -1,6 +1,7 @@
 package com.vash.domaine;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.Email;
@@ -34,7 +35,7 @@ public class UserVo implements Serializable{
 	private String phoneNumber1;
 	private String phoneNumber2;
 
-	private List<RoleVo> roles;
+	private List<RoleVo> roles = new ArrayList<>();
 
 	private List<PropertyVo> propertys;
 

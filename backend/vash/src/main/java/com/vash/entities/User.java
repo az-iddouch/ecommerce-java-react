@@ -31,7 +31,7 @@ public class User implements Serializable {
 	private String phoneNumber1;
 	private String phoneNumber2;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "fk_user_role_user_id")), inverseJoinColumns = @JoinColumn(foreignKey = @ForeignKey(name = "fk_user_role_role_id")))
 	private List<Role> roles;
 

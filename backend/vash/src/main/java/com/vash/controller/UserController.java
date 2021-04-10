@@ -1,20 +1,20 @@
 package com.vash.controller;
 
+import com.vash.domaine.LoginPayload;
 import com.vash.utils.ErrorValidation;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.vash.domaine.UserVo;
 import com.vash.service.IUserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Map;
 
 @RestController
@@ -31,10 +31,16 @@ public class UserController {
 			return errorMap;
 		}
 
-		return ResponseEntity.created(null).body(iUserService.save(userVo));
+		return ResponseEntity.created(null).body(iUserService.register(userVo));
 	}
-	
-	@PostMapping(value="/rest/user/search")
+
+	@PostMapping(value = "/login")
+	public ResponseEntity<LoginPayload> login(@RequestParam(name = "userName") String username, @RequestParam(name = "password") String password) {
+		System.out.println(username + " / " + password);
+		return ResponseEntity.ok().body(iUserService.login(username, password));
+	}
+
+	@PostMapping(value="/search")
 	public ResponseEntity<Object> search(@RequestBody UserVo userVo){
 		if(ObjectUtils.isEmpty(userVo)) {
 			return new ResponseEntity<>("error is empty",HttpStatus.OK);
@@ -44,5 +50,10 @@ public class UserController {
 			return new ResponseEntity<>("doesn't exist",HttpStatus.OK);
 		}
 		return new ResponseEntity<>(user,HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/test")
+	public ResponseEntity<?> test(Principal principal){
+		return ResponseEntity.ok(principal.getName());
 	}
 }

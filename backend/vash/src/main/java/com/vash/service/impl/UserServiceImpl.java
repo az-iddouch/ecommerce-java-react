@@ -3,7 +3,7 @@ package com.vash.service.impl;
 import java.util.List;
 import java.util.Optional;
 
-import com.vash.domaine.RoleVo;
+import com.vash.domaine.*;
 import com.vash.exceptions.UsernameException;
 import com.vash.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import com.vash.dao.IUserRepository;
-import com.vash.domaine.UserConverter;
-import com.vash.domaine.UserVo;
 import com.vash.entities.User;
 import com.vash.service.IUserService;
 
@@ -41,18 +39,25 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    public String login(String username, String password) {
+    @Override
+    public LoginPayload login(String username, String password) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
             User user = iUserRepository.findByUserName(username);
-            return jwtTokenProvider.createToken(username, user.getRoles(), user.getId());
+            String token = jwtTokenProvider.createToken(username, user.getRoles(), user.getId());
+            return LoginPayload.builder().token(token).
+                    fullName(user.getFirstName() + " " + user.getLastName())
+                    .id(user.getId())
+                    .roles(RoleConverter.toListVo(user.getRoles())).build();
         } catch (AuthenticationException e) {
             throw new UsernameException("Invalid username/password supplied");
         }
     }
 
+
+
     @Override
-    public String save(UserVo userVo) {
+    public LoginPayload register(UserVo userVo) {
         User userTemp = iUserRepository.findByUserName(userVo.getUserName());
         if (userTemp != null) {
             throw new UsernameException("Username already exists !");
@@ -61,7 +66,11 @@ public class UserServiceImpl implements IUserService {
         userVo.getRoles().add(clientRole);
         userVo.setPassword(bCryptPasswordEncoder.encode(userVo.getPassword()));
         User user = iUserRepository.save(UserConverter.toBo(userVo));
-        return jwtTokenProvider.createToken(user.getUserName(), user.getRoles(), user.getId());
+        String token = jwtTokenProvider.createToken(user.getUserName(), user.getRoles(), user.getId());
+        return LoginPayload.builder().id(user.getId())
+                .fullName(user.getFirstName() + " " + user.getLastName())
+                .roles(RoleConverter.toListVo(user.getRoles())).build();
+
     }
 
     @Override

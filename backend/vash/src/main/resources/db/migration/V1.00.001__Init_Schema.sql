@@ -34,6 +34,7 @@
  drop table if exists type_property cascade;
  drop table if exists user_role cascade;
  drop table if exists vtopeightville cascade;
+--  drop table flyway_schema_history;
 
  -- create table
  create table address (id  bigserial not null, address varchar(255), primary key (id));
