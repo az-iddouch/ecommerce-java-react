@@ -16,11 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vash.domaine.AddressVo;
-import com.vash.domaine.CityVo;
 import com.vash.domaine.PropertyVo;
-import com.vash.domaine.TypePropertyVo;
-import com.vash.domaine.UserVo;
 import com.vash.service.ICityService;
 import com.vash.service.IPropertyService;
 import com.vash.service.ITypePropertyService;

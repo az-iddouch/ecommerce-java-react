@@ -17,5 +17,4 @@ public class CountryVo implements Serializable{
 	private Long id;
 	private String nameCountry;
 	
-	private CityVo city;
 }

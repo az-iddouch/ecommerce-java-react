@@ -1,7 +1,6 @@
 package com.vash.domaine;
 
 import java.io.Serializable;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,5 +18,4 @@ public class TypePropertyVo implements Serializable{
 	private Long id;
 	private String type;
 
-	private List<PropertyVo> propertys;
 }

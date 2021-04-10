@@ -16,7 +16,4 @@ public class AddressVo implements Serializable{
 	private static final long serialVersionUID = 8206748478307904615L;
 	private Long id;
 	private String address;
-
-	private PropertyVo property;
-
 }

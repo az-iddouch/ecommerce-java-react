@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.UNAUTHORIZED)
 public class AuthCustomException extends RuntimeException{
-    public AuthCustomException(String message) {
+	private static final long serialVersionUID = -1051821395026750544L;
+
+	public AuthCustomException(String message) {
         super(message);
     }
 }

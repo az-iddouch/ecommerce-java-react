@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class UsernameException extends RuntimeException{
-    public UsernameException(String message) {
+	private static final long serialVersionUID = 1005280779999937235L;
+
+	public UsernameException(String message) {
         super(message);
     }
 }

@@ -1,23 +1,31 @@
 package com.vash.controller;
 
-import com.vash.domaine.LoginPayload;
-import com.vash.utils.ErrorValidation;
-import org.apache.catalina.connector.Response;
+import java.security.Principal;
+import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.vash.domaine.LoginPayload;
 import com.vash.domaine.UserVo;
 import com.vash.service.IUserService;
+import com.vash.utils.ErrorValidation;
 
-import javax.validation.Valid;
-import java.security.Principal;
-import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
+@Slf4j
 @RequestMapping("/api/users")
 public class UserController {
 
@@ -36,7 +44,7 @@ public class UserController {
 
 	@PostMapping(value = "/login")
 	public ResponseEntity<LoginPayload> login(@RequestParam(name = "userName") String username, @RequestParam(name = "password") String password) {
-		System.out.println(username + " / " + password);
+		log.info(username + " / " + password);
 		return ResponseEntity.ok().body(iUserService.login(username, password));
 	}
 

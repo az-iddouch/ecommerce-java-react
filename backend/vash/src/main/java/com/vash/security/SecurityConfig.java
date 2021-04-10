@@ -1,6 +1,5 @@
 package com.vash.security;
 
-import com.vash.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,9 +19,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
-
-    @Autowired
-    private IUserService iUserService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -52,18 +48,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-
-//    @Override
-//    @Bean
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return super.authenticationManagerBean();
-//    }
-
-//    @Bean
-//    @Override
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return super.authenticationManager();
-//    }
 
     @Bean
     @Override

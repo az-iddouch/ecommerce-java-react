@@ -1,16 +1,17 @@
 package com.vash.security;
 
-import com.vash.dao.IUserRepository;
-import com.vash.entities.User;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
-import java.util.stream.Collectors;
+import com.vash.dao.IUserRepository;
+import com.vash.entities.User;
 
 
 @Service
@@ -25,7 +26,7 @@ public class MyCustomUserDetails implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         final User user = userRepository.findByUserName(username);
 
-        if (user == null) {
+        if (ObjectUtils.isEmpty(user)) {
             throw new UsernameNotFoundException("User '" + username + "' not found");
         }
 
