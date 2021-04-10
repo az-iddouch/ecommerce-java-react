@@ -40,7 +40,7 @@ public class PropertyController {
 	private ITypePropertyService iTypePropertyService;
 	
 
-	@PostMapping(value = "/save/{userid}/")
+	@PostMapping(value = "/save")
 	public ResponseEntity<Object> save(@Valid @RequestBody String userid) {
 //		CityVo cityVo=iCityService.findById(1L);
 //		TypePropertyVo typePropertyVo=iTypePropertyService.findById(1L);
