@@ -18,7 +18,7 @@ public class CityVo implements Serializable{
 	private static final long serialVersionUID = -4636383004887261393L;
 	private Long id;
 	private String nameCity;
-	
+	private String url;
 	private AddressVo address;
 	
 	private CountryVo country;

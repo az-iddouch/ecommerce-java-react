@@ -15,7 +15,7 @@ public class RoleConverter {
 			roleVo=new RoleVo();
 			roleVo.setId(role.getId());
 			roleVo.setRole(role.getRole());
-			roleVo.setUsers(UserConverter.toListVo(role.getUsers()));
+			//roleVo.setUsers(UserConverter.toListVo(role.getUsers()));
 		}
 		
 		return roleVo;
@@ -27,7 +27,7 @@ public class RoleConverter {
 			role=new Role();
 			role.setId(roleVo.getId());
 			role.setRole(roleVo.getRole());
-			role.setUsers(UserConverter.toListBo(roleVo.getUsers()));
+			//role.setUsers(UserConverter.toListBo(roleVo.getUsers()));
 		}
 		return role;
 	}

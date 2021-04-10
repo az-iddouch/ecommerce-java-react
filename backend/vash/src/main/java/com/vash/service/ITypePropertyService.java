@@ -10,4 +10,5 @@ public interface ITypePropertyService {
 	List<TypePropertyVo> findAll();
 	TypePropertyVo findById(Long id);
 	boolean deleteById(Long id);
+	
 }

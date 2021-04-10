@@ -19,5 +19,4 @@ public class AddressVo implements Serializable{
 
 	private PropertyVo property;
 
-	private CityVo city;
 }

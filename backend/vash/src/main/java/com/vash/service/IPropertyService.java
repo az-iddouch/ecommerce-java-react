@@ -10,13 +10,14 @@ public interface IPropertyService {
 
 	PropertyVo save(PropertyVo PropertyVo);
 	List<PropertyVo> findAll();
-	List<PropertyVo> findByCityNameCity(String nameCity);
+	List<PropertyVo> findByCityId(Long idCity);
 	Integer countPropertyInCity(CityVo cityVo);
 	PropertyVo findById(Long id);
-	List<PropertyVo> findByCityNameCityAndVisibleTrue(String nameCity);
-	List<PropertyVo> findByCityNameCityAndVisibleTrueAndNumberMaxPersons(String nameCity,Integer numberMaxPersons);
+	List<PropertyVo> findByCityIdAndVisibleTrue(Long idCity);
+	List<PropertyVo> findByCityIdAndVisibleTrueAndNumberMaxPersons(Long idCity,Integer numberMaxPersons);
 
 	List<PropertyVo> findByCityNameCityAndVisibleTrueAndBetweenDate(String nameCity,Date dateStart,Date dateEnd);
 	List<PropertyVo> findByCityNameCityAndVisibleTrueAndNumberMaxPersonsBetweenDate(String nameCity,Integer numberMaxPersons,Date dateStart,Date dateEnd);
 	boolean deleteById(Long id);
+	List<PropertyVo> findByTypePropertyId(Long id); 
 }

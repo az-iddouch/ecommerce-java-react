@@ -32,21 +32,21 @@ public class TypePropertyServiceImpl implements ITypePropertyService {
 
 	@Override
 	public TypePropertyVo findById(Long id) {
-		Optional<TypeProperty> TypePropertyOptional=iTypePropertyRepository.findById(id);
-		TypePropertyVo TypePropertyVo=new TypePropertyVo();
-		if(TypePropertyOptional.isPresent()) {
-			TypePropertyVo=TypePropertyConverter.toVo(TypePropertyOptional.get());
+		Optional<TypeProperty> TypePropertyOptional = iTypePropertyRepository.findById(id);
+		TypePropertyVo TypePropertyVo = new TypePropertyVo();
+		if (TypePropertyOptional.isPresent()) {
+			TypePropertyVo = TypePropertyConverter.toVo(TypePropertyOptional.get());
 		}
 		return TypePropertyVo;
 	}
 
 	@Override
 	public boolean deleteById(Long id) {
-		boolean checked=true;
+		boolean checked = true;
 		iTypePropertyRepository.deleteById(id);
-		TypePropertyVo TypePropertyVo= findById(id);
-		if(!ObjectUtils.isEmpty(TypePropertyVo)) {
-			checked=true;
+		TypePropertyVo TypePropertyVo = findById(id);
+		if (!ObjectUtils.isEmpty(TypePropertyVo)) {
+			checked = true;
 		}
 		return checked;
 	}

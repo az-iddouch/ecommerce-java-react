@@ -15,7 +15,7 @@ public class TypePropertyConverter {
 			typeProperty = new TypeProperty();
 			typeProperty.setId(typePropertyVo.getId());
 			typeProperty.setType(typePropertyVo.getType());
-			typeProperty.setPropertys(PropertyConvert.toListBo(typePropertyVo.getPropertys()));
+		//	typeProperty.setPropertys(PropertyConvert.toListBo(typePropertyVo.getPropertys()));
 		}
 
 		return typeProperty;
@@ -27,7 +27,7 @@ public class TypePropertyConverter {
 			typePropertyVo = new TypePropertyVo();
 			typePropertyVo.setId(typeProperty.getId());
 			typePropertyVo.setType(typeProperty.getType());
-			typePropertyVo.setPropertys(PropertyConvert.toListVo(typeProperty.getPropertys()));
+			//typePropertyVo.setPropertys(PropertyConvert.toListVo(typeProperty.getPropertys()));
 		}
 
 		return typePropertyVo;
