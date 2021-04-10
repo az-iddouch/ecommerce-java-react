@@ -10,6 +10,8 @@ import com.vash.service.IPropertyService;
 import com.vash.service.IReservationService;
 import com.vash.service.IUserService;
 import com.vash.utils.IMailService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class VashApplication implements CommandLineRunner{
@@ -29,6 +31,11 @@ public class VashApplication implements CommandLineRunner{
 	
 	public static void main(String[] args) {
 		SpringApplication.run(VashApplication.class, args);
+	}
+
+	@Bean
+	BCryptPasswordEncoder BCryptPasswordEncoder () {
+		return new BCryptPasswordEncoder();
 	}
 
 	@Override

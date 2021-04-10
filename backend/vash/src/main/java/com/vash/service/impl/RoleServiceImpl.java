@@ -50,4 +50,8 @@ private IRoleRepository iRoleRepository;
 		return checked;
 	}
 
+	@Override
+    public RoleVo findByRole(String client) {
+		return RoleConverter.toVo(iRoleRepository.findByRole(client));
+	}
 }

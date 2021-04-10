@@ -6,7 +6,7 @@ import com.vash.domaine.UserVo;
 
 public interface IUserService {
 
-	UserVo save(UserVo userVo);
+	String save(UserVo userVo);
 	List<UserVo> findAll();
 	UserVo findByUserNameAndPassword(String userName,String password);
 	UserVo findById(Long id);

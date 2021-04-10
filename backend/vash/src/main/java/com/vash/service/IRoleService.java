@@ -10,4 +10,5 @@ public interface IRoleService {
 	List<RoleVo> findAll();
 	RoleVo findById(Long id);
 	boolean deleteById(Long id);
+	public RoleVo findByRole(String client);
 }

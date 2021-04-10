@@ -7,6 +7,5 @@ import com.vash.entities.User;
 public interface IUserRepository extends JpaRepository<User, Long>{
 	
 	User findByUserNameAndPassword(String userName,String password);
-	
-
+	User findByUserName(String userName);
 }
