@@ -9,5 +9,5 @@ import com.vash.entities.Reservation;
 public interface IReservationRepository extends JpaRepository<Reservation, Long>{
 
 	 List<Reservation> findByPropertyId(Long idProperty);
-	
+	 List<Reservation> findByPropertyIdIn(List<Long> idProperty);
 }

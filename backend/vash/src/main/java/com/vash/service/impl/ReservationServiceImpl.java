@@ -104,4 +104,9 @@ public class ReservationServiceImpl implements IReservationService {
 		return checked;
 	}
 
+	@Override
+	public List<ReservationVo> findByPropertyIdIn(List<Long> idPropertys) {
+		return ReservationConvert.toListVo(iReservationRepository.findByPropertyIdIn(idPropertys));
+	}
+
 }

@@ -12,5 +12,6 @@ public interface IUserService {
 	UserVo findByUserNameAndPassword(String userName,String password);
 	UserVo findById(Long id);
 	boolean deleteById(Long id);
-    LoginPayload login(String username, String password);
+    LoginPayload login(String userName, String password);
+    UserVo findByUserName(String userName);
 }

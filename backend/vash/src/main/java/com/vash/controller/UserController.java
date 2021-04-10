@@ -44,7 +44,7 @@ public class UserController {
 
 	@PostMapping(value = "/login")
 	public ResponseEntity<LoginPayload> login(@RequestParam(name = "userName") String username, @RequestParam(name = "password") String password) {
-		log.info(username + " / " + password);
+		log.info("username :" + username );
 		return ResponseEntity.ok().body(iUserService.login(username, password));
 	}
 

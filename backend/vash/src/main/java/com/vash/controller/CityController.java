@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vash.domaine.CityVo;
+import com.vash.domaine.VTopEightVilleVo;
 import com.vash.service.ICityService;
+import com.vash.service.IVTopEightVilleService;
 
 @RestController
 @RequestMapping(value="/api/city")
@@ -25,6 +27,8 @@ public class CityController {
 
 	@Autowired
 	private ICityService iCityService;
+	@Autowired
+	private IVTopEightVilleService iVTopEightVilleService;
 
 	@PostMapping(value = "/save")
 	public ResponseEntity<Object> save(@RequestBody CityVo cityVo) {
@@ -86,5 +90,14 @@ public class CityController {
 		}
 		return new ResponseEntity<>(maps, HttpStatus.OK);
 	}
-	
+
+	@GetMapping(value = "/vTopEightVilleVo")
+	public ResponseEntity<Object> findAllvTopEightVilleVo() {
+		List<VTopEightVilleVo> vTopEightVilleVos=new ArrayList<VTopEightVilleVo>();
+		vTopEightVilleVos= iVTopEightVilleService.findAll();
+		if (ObjectUtils.isEmpty(vTopEightVilleVos)) {
+			return new ResponseEntity<>("doesn't exist", HttpStatus.OK);
+		}
+		return new ResponseEntity<>(vTopEightVilleVos,HttpStatus.OK);
+	}
 }

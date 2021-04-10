@@ -1,14 +1,15 @@
 package com.vash.controller;
 
+import java.security.Principal;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vash.domaine.ReservationVo;
@@ -28,7 +29,7 @@ public class ReservationController {
 	private IPropertyService iPropertyService;
 	
 	@PostMapping(value="/save/{numberPersons}/{dateStart}/{dateEnd}/{status}/{idProperty}/{idUser}")
-	public ResponseEntity<Object> save(@PathVariable(value="numberPersons")String numberPersons,@PathVariable(value="dateStart")Date dateStart,@PathVariable(value="dateEnd") Date dateEnd,@PathVariable(value="status")String status,@PathVariable(value="idProperty")String idProperty,@PathVariable(value="idUser")String idUser){
+	public ResponseEntity<Object> save(@RequestParam(value="numberPersons")String numberPersons,@RequestParam(value="dateStart")Date dateStart,@RequestParam(value="dateEnd") Date dateEnd,@RequestParam(value="status")String status,@RequestParam(value="idProperty")String idProperty,@RequestParam(value="idUser")String idUser){
 
 		ReservationVo reservationVo=new ReservationVo();
 		reservationVo.setDateEnd((dateEnd));
@@ -44,4 +45,16 @@ public class ReservationController {
 		
 		return new ResponseEntity<>("Reservation isn't created ", HttpStatus.CREATED);
 	}
+	
+	public String  recupUserName(Principal principal){
+		String username="";
+		if(!ObjectUtils.isEmpty(principal)) {
+			username=principal.getName();
+		}
+		return username;
+	}
+	
+	
+	
+	
 }

@@ -12,8 +12,8 @@ public interface IReservationService {
 	ReservationVo save(ReservationVo reservationVo);
 	List<ReservationVo> findAll();
 	List<ReservationVo> findByPropertyId(Long idProperty);
+	List<ReservationVo> findByPropertyIdIn(List<Long> idPropertys);
 	Integer countReservationByProperty(CityVo cityVo);
-	
 	Map<CityVo,Integer> countReservationByCity(CountryVo countryVo);
 	ReservationVo findById(Long id);
 	boolean deleteById(Long id);

@@ -109,4 +109,9 @@ public class UserServiceImpl implements IUserService {
         return checked;
     }
 
+	@Override
+	public UserVo findByUserName(String userName) {
+		return UserConverter.toVo(iUserRepository.findByUserName(userName));
+	}
+
 }
