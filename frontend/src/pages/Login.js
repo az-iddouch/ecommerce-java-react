@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,11 +11,25 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import './Login.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { asyncLogin } from '../features/authSlice';
+import { useHistory } from 'react-router';
 
 export default function SignIn() {
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+
+  const errors = useSelector((state) => state.auth.errors);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  function handleLogin(e) {
+    e.preventDefault();
+    dispatch(asyncLogin(history, userName, password));
+  }
+
   return (
     <Container component="main" maxWidth="xs">
-      {/* <CssBaseline /> */}
       <div className="login content">
         <Avatar className="login_avatar">
           <LockOutlinedIcon />
@@ -23,17 +37,21 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form noValidate>
+        <form noValidate onSubmit={handleLogin}>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="username"
+            name="username"
+            autoComplete="username"
             autoFocus
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            error={errors && errors.userName ? true : false}
+            helperText={errors && errors.userName ? errors.userName : ''}
           />
           <TextField
             variant="outlined"
@@ -45,20 +63,13 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Button type="submit" fullWidth variant="contained">
             Sign In
           </Button>
           <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
             <Grid item>
               <Link href="#" variant="body2">
                 {"Don't have an account? Sign Up"}

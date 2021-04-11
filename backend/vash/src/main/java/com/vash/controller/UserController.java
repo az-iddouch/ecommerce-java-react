@@ -31,7 +31,7 @@ public class UserController {
 
 	@Autowired
 	private IUserService iUserService;
-	
+
 	@PostMapping(value="/register")
 	public ResponseEntity<?> register(@Valid @RequestBody UserVo userVo, BindingResult result){
 		ResponseEntity<Map<String, String>> errorMap = ErrorValidation.getValidationErrorMap(result);
@@ -45,6 +45,7 @@ public class UserController {
 	@PostMapping(value = "/login")
 	public ResponseEntity<LoginPayload> login(@RequestParam(name = "userName") String username, @RequestParam(name = "password") String password) {
 		log.info("username :" + username );
+
 		return ResponseEntity.ok().body(iUserService.login(username, password));
 	}
 

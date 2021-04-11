@@ -72,6 +72,7 @@ public class UserServiceImpl implements IUserService {
         @SuppressWarnings("unused")
 		String token = jwtTokenProvider.createToken(user.getUserName(), user.getRoles(), user.getId());
         return LoginPayload.builder().id(user.getId())
+
                 .fullName(user.getFirstName() + " " + user.getLastName())
                 .roles(RoleConverter.toListVo(user.getRoles())).build();
 
