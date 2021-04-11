@@ -1,7 +1,6 @@
 package com.vash.domaine;
 
 import java.io.Serializable;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,9 +18,4 @@ public class CityVo implements Serializable{
 	private Long id;
 	private String nameCity;
 	private String url;
-	private AddressVo address;
-	
-	private CountryVo country;
-	
-	private List<PropertyVo> propertyVos;
 }

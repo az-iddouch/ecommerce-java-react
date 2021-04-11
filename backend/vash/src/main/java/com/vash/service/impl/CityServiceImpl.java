@@ -15,6 +15,7 @@ import com.vash.dao.ICityRepository;
 import com.vash.domaine.CityConverter;
 import com.vash.domaine.CityVo;
 import com.vash.entities.City;
+import com.vash.security.aop.LogTracer;
 import com.vash.service.ICityService;
 import com.vash.service.IPropertyService;
 
@@ -33,6 +34,7 @@ public class CityServiceImpl implements ICityService {
 	}
 
 	@Override
+	@LogTracer
 	public List<CityVo> findAll() {
 		return CityConverter.toListVo(iCityRepository.findAll());
 	}
