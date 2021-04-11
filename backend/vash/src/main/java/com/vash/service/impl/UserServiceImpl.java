@@ -67,7 +67,7 @@ public class UserServiceImpl implements IUserService {
         userVo.setPassword(bCryptPasswordEncoder.encode(userVo.getPassword()));
         User user = iUserRepository.save(UserConverter.toBo(userVo));
         String token = jwtTokenProvider.createToken(user.getUserName(), user.getRoles(), user.getId());
-        return LoginPayload.builder().id(user.getId())
+        return LoginPayload.builder().id(user.getId()).token(token)
                 .fullName(user.getFirstName() + " " + user.getLastName())
                 .roles(RoleConverter.toListVo(user.getRoles())).build();
 
