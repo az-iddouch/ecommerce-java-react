@@ -4,9 +4,12 @@ import { Avatar, Button } from '@material-ui/core';
 import Search from './Search';
 import './Header.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Header() {
   const [showSearch, setShowSearch] = useState(false);
+  const user = useSelector((state) => state.auth.user);
+
   return (
     <div className="header">
       <div className="header__logo">
@@ -24,11 +27,18 @@ function Header() {
         </Button>
         <div className="header__search">{showSearch && <Search />}</div>
       </div>
-      <div className="header__right">
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-        <Avatar />
-      </div>
+      {user ? (
+        <div className="header__right">
+          <Link>{user.fullName}</Link>
+          <Avatar />
+        </div>
+      ) : (
+        <div className="header__right">
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+          <Avatar />
+        </div>
+      )}
     </div>
   );
 }

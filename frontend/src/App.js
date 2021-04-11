@@ -9,8 +9,19 @@ import Listing from './pages/Listing';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import setJWTToken from './securityUtils';
+import { useDispatch } from 'react-redux';
+import { login } from './features/authSlice';
 
 function App() {
+  const dispatch = useDispatch();
+
+  let user = localStorage.getItem('user');
+  if (user) {
+    user = JSON.parse(localStorage.getItem('user'));
+    setJWTToken(user.token);
+    dispatch(login(user));
+  }
   return (
     <div className="App">
       <Router>
