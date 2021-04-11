@@ -21,6 +21,7 @@ import com.vash.domaine.UserVo;
 import com.vash.entities.User;
 import com.vash.exceptions.UsernameException;
 import com.vash.security.JwtTokenProvider;
+import com.vash.security.aop.LogTracer;
 import com.vash.service.IUserService;
 
 @Service
@@ -43,6 +44,7 @@ public class UserServiceImpl implements IUserService {
     private AuthenticationManager authenticationManager;
 
     @Override
+    @LogTracer
     public LoginPayload login(String username, String password) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
@@ -60,6 +62,7 @@ public class UserServiceImpl implements IUserService {
 
 
     @Override
+    @LogTracer
     public LoginPayload register(UserVo userVo) {
         User userTemp = iUserRepository.findByUserName(userVo.getUserName());
         if (userTemp != null) {
@@ -79,17 +82,20 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    @LogTracer
     public List<UserVo> findAll() {
         return UserConverter.toListVo(iUserRepository.findAll());
     }
 
     @Override
+    @LogTracer
     public UserVo findByUserNameAndPassword(String userName, String password) {
 
         return UserConverter.toVo(iUserRepository.findByUserNameAndPassword(userName, password));
     }
 
     @Override
+    @LogTracer
     public UserVo findById(Long id) {
         Optional<User> UserOptional = iUserRepository.findById(id);
         UserVo userVo = new UserVo();
@@ -100,6 +106,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    @LogTracer
     public boolean deleteById(Long id) {
         boolean checked = true;
         iUserRepository.deleteById(id);
@@ -111,6 +118,7 @@ public class UserServiceImpl implements IUserService {
     }
 
 	@Override
+	@LogTracer
 	public UserVo findByUserName(String userName) {
 		return UserConverter.toVo(iUserRepository.findByUserName(userName));
 	}

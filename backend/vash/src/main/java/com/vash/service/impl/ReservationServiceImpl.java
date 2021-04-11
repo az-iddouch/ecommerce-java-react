@@ -18,6 +18,7 @@ import com.vash.domaine.PropertyVo;
 import com.vash.domaine.ReservationConvert;
 import com.vash.domaine.ReservationVo;
 import com.vash.entities.Reservation;
+import com.vash.security.aop.LogTracer;
 import com.vash.service.ICityService;
 import com.vash.service.IPropertyService;
 import com.vash.service.IReservationService;
@@ -34,21 +35,25 @@ public class ReservationServiceImpl implements IReservationService {
 	private ICityService iCityService;
 
 	@Override
+	@LogTracer
 	public ReservationVo save(ReservationVo reservationVo) {
 		return ReservationConvert.toVo(iReservationRepository.save(ReservationConvert.toBo(reservationVo)));
 	}
 
 	@Override
+	@LogTracer
 	public List<ReservationVo> findAll() {
 		return ReservationConvert.toListVo(iReservationRepository.findAll());
 	}
 
 	@Override
+	@LogTracer
 	public List<ReservationVo> findByPropertyId(Long idProperty) {
 		return ReservationConvert.toListVo(iReservationRepository.findByPropertyId(idProperty));
 	}
 
 	@Override
+	@LogTracer
 	public Integer countReservationByProperty(CityVo cityVo) {
 		Integer count = 0;
 		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
@@ -66,6 +71,7 @@ public class ReservationServiceImpl implements IReservationService {
 	}
 
 	@Override
+	@LogTracer
 	public Map<CityVo, Integer> countReservationByCity(CountryVo countryVo) {
 		Map<CityVo, Integer> maps = new HashMap<CityVo, Integer>();
 		List<CityVo> cityVos = new ArrayList<CityVo>();
@@ -84,6 +90,7 @@ public class ReservationServiceImpl implements IReservationService {
 	}
 
 	@Override
+	@LogTracer
 	public ReservationVo findById(Long id) {
 		Optional<Reservation> reservationOptional = iReservationRepository.findById(id);
 		ReservationVo reservationVo = new ReservationVo();
@@ -94,6 +101,7 @@ public class ReservationServiceImpl implements IReservationService {
 	}
 
 	@Override
+	@LogTracer
 	public boolean deleteById(Long id) {
 		boolean checked = true;
 		iReservationRepository.deleteById(id);
@@ -105,6 +113,7 @@ public class ReservationServiceImpl implements IReservationService {
 	}
 
 	@Override
+	@LogTracer
 	public List<ReservationVo> findByPropertyIdIn(List<Long> idPropertys) {
 		return ReservationConvert.toListVo(iReservationRepository.findByPropertyIdIn(idPropertys));
 	}

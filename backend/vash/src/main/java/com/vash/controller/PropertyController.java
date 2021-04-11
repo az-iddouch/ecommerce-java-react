@@ -17,23 +17,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vash.domaine.PropertyVo;
-import com.vash.service.ICityService;
 import com.vash.service.IPropertyService;
-import com.vash.service.ITypePropertyService;
-import com.vash.service.IUserService;
 
 @RestController
 @RequestMapping(value = "/api/property")
 public class PropertyController {
 
-	@Autowired
-	private IUserService iUserService;
-	@Autowired
-	private ICityService iCityService;
+//	@Autowired
+//	private IUserService iUserService;
+//	@Autowired
+//	private ICityService iCityService;
 	@Autowired
 	private IPropertyService iPropertyService;
-	@Autowired
-	private ITypePropertyService iTypePropertyService;
+//	@Autowired
+//	private ITypePropertyService iTypePropertyService;
 	
 
 	@PostMapping(value = "/save")

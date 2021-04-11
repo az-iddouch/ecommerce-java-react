@@ -15,6 +15,7 @@ import com.vash.domaine.CityVo;
 import com.vash.domaine.PropertyConvert;
 import com.vash.domaine.PropertyVo;
 import com.vash.entities.Property;
+import com.vash.security.aop.LogTracer;
 import com.vash.service.IPropertyService;
 
 @Service
@@ -25,16 +26,19 @@ public class PropertyServiceImpl implements IPropertyService {
 	private IPropertyRepository iPropertyRepository;
 
 	@Override
+	@LogTracer
 	public PropertyVo save(PropertyVo PropertyVo) {
 		return PropertyConvert.toVo(iPropertyRepository.save(PropertyConvert.toBo(PropertyVo)));
 	}
 
 	@Override
+	@LogTracer
 	public List<PropertyVo> findAll() {
 		return PropertyConvert.toListVo(iPropertyRepository.findAll());
 	}
 
 	@Override
+	@LogTracer
 	public List<PropertyVo> findByCityId(Long idCity) {
 		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
 		if (!ObjectUtils.isEmpty(idCity)) {
@@ -44,6 +48,7 @@ public class PropertyServiceImpl implements IPropertyService {
 	}
 
 	@Override
+	@LogTracer
 	public Integer countPropertyInCity(CityVo cityVo) {
 		Integer count = 0;
 		List<PropertyVo> propertyVos = findByCityId(cityVo.getId());
@@ -54,6 +59,7 @@ public class PropertyServiceImpl implements IPropertyService {
 	}
 
 	@Override
+	@LogTracer
 	public PropertyVo findById(Long id) {
 		PropertyVo propertyVo = null;
 		Optional<Property> property = iPropertyRepository.findById(id);
@@ -64,6 +70,7 @@ public class PropertyServiceImpl implements IPropertyService {
 	}
 
 	@Override
+	@LogTracer
 	public List<PropertyVo> findByCityIdAndVisibleTrue(Long idCity) {
 		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
 		if (!ObjectUtils.isEmpty(idCity)) {
@@ -74,6 +81,7 @@ public class PropertyServiceImpl implements IPropertyService {
 	}
 
 	@Override
+	@LogTracer
 	public List<PropertyVo> findByCityIdAndVisibleTrueAndNumberMaxPersons(Long idCity, Integer numberMaxPersons) {
 		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
 		if (!ObjectUtils.isEmpty(idCity) || !ObjectUtils.isEmpty(numberMaxPersons)) {
@@ -84,6 +92,7 @@ public class PropertyServiceImpl implements IPropertyService {
 	}
 
 	@Override
+	@LogTracer
 	public List<PropertyVo> findByCityNameCityAndVisibleTrueAndBetweenDate(String nameCity, Date dateStart,
 			Date dateEnd) {
 
@@ -91,6 +100,7 @@ public class PropertyServiceImpl implements IPropertyService {
 	}
 
 	@Override
+	@LogTracer
 	public List<PropertyVo> findByCityNameCityAndVisibleTrueAndNumberMaxPersonsBetweenDate(String nameCity,
 			Integer numberMaxPersons, Date dateStart, Date dateEnd) {
 		return null;

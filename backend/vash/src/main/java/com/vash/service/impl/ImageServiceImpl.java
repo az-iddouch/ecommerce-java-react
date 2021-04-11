@@ -12,6 +12,7 @@ import com.vash.dao.IImageRepository;
 import com.vash.domaine.ImageConverter;
 import com.vash.domaine.ImageVo;
 import com.vash.entities.Image;
+import com.vash.security.aop.LogTracer;
 import com.vash.service.IImageService;
 
 @Service
@@ -21,16 +22,19 @@ public class ImageServiceImpl implements IImageService{
 private IImageRepository iImageRepository;
 
 	@Override
+	@LogTracer
 	public ImageVo save(ImageVo imageVo) {
 		return ImageConverter.toVo(iImageRepository.save(ImageConverter.toBo(imageVo)));
 	}
 
 	@Override
+	@LogTracer
 	public List<ImageVo> findAll() {
 		return ImageConverter.toListVo(iImageRepository.findAll());
 	}
 
 	@Override
+	@LogTracer
 	public ImageVo findById(Long id) {
 		
 		Optional<Image> ImageOptional=iImageRepository.findById(id);
@@ -42,6 +46,7 @@ private IImageRepository iImageRepository;
 	}
 
 	@Override
+	@LogTracer
 	public boolean deleteById(Long id) {
 		boolean checked=true;
 		iImageRepository.deleteById(id);

@@ -12,6 +12,7 @@ import com.vash.dao.ITagsRepository;
 import com.vash.domaine.TagsConverter;
 import com.vash.domaine.TagsVo;
 import com.vash.entities.Tags;
+import com.vash.security.aop.LogTracer;
 import com.vash.service.ITagsService;
 
 @Service
@@ -21,16 +22,19 @@ public class TagsServiceImpl implements ITagsService{
 private ITagsRepository iTagsRepository;
 	
 	@Override
+	@LogTracer
 	public TagsVo save(TagsVo tagsVo) {
 		return TagsConverter.toVo(iTagsRepository.save(TagsConverter.toBo(tagsVo)));
 	}
 
 	@Override
+	@LogTracer
 	public List<TagsVo> findAll() {
 		return TagsConverter.toListVo(iTagsRepository.findAll());
 	}
 
 	@Override
+	@LogTracer
 	public TagsVo findById(Long id) {
 		Optional<Tags> tagsOptional=iTagsRepository.findById(id);
 		TagsVo tagsVo=new TagsVo();
@@ -41,6 +45,7 @@ private ITagsRepository iTagsRepository;
 	}
 
 	@Override
+	@LogTracer
 	public boolean deleteById(Long id) {
 		boolean checked=true;
 		iTagsRepository.deleteById(id);
@@ -52,6 +57,7 @@ private ITagsRepository iTagsRepository;
 	}
 
 	@Override
+	@LogTracer
 	public List<TagsVo> findAllByIds(List<Long> ids) {
 
 		return TagsConverter.toListVo(iTagsRepository.findAllById(ids));

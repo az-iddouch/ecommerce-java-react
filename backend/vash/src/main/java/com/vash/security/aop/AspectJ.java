@@ -22,4 +22,12 @@ public class AspectJ {
 	return proceed;
 	} 
 	
+	@Around("@annotation(LogTracer)")
+	public Object logTracer(ProceedingJoinPoint pjp) throws Throwable {
+	log.info("start method package :" +pjp.getTarget().getClass().toString() +" name : "+pjp.getSignature().getName());
+	Object proceed = pjp.proceed();
+	log.info("end method package :" +pjp.getTarget().getClass().toString() +" name : "+pjp.getSignature().getName());
+	return proceed;
+	} 
+	
 }

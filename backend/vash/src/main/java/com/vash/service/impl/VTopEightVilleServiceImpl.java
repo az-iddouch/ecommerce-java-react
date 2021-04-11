@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.vash.dao.IVTopEightVilleRepository;
 import com.vash.domaine.VTopEightVilleConverter;
 import com.vash.domaine.VTopEightVilleVo;
+import com.vash.security.aop.LogTracer;
 import com.vash.service.IVTopEightVilleService;
 
 @Service
@@ -19,6 +20,7 @@ public class VTopEightVilleServiceImpl implements IVTopEightVilleService {
 private IVTopEightVilleRepository iVTopEightVilleRepository;
 	
 	@Override
+	@LogTracer
 	public List<VTopEightVilleVo> findAll() {
 		return VTopEightVilleConverter.toListVo(iVTopEightVilleRepository.findAll());
 	}

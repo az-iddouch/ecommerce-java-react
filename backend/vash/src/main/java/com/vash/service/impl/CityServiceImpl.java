@@ -29,6 +29,7 @@ public class CityServiceImpl implements ICityService {
 	private IPropertyService iPropertyService;
 
 	@Override
+	@LogTracer
 	public CityVo save(CityVo cityVo) {
 		return CityConverter.toVo(iCityRepository.save(CityConverter.toBo(cityVo)));
 	}
@@ -40,11 +41,13 @@ public class CityServiceImpl implements ICityService {
 	}
 
 	@Override
+	@LogTracer
 	public List<CityVo> findByNameCityIgnoreCaseContaining(String namecity) {
 		return CityConverter.toListVo(iCityRepository.findByNameCityIgnoreCaseContaining(namecity));
 	}
 
 	@Override
+	@LogTracer
 	public Map<CityVo, Integer> countPropertyByCity(String nameCountry) {
 		Map<CityVo, Integer> maps = new HashMap<CityVo, Integer>();
 		List<CityVo> cityVos = new ArrayList<CityVo>();
@@ -58,17 +61,20 @@ public class CityServiceImpl implements ICityService {
 	}
 
 	@Override
+	@LogTracer
 	public CityVo findByNameCityIgnoreCase(String namecity) {
 		return CityConverter.toVo(iCityRepository.findByNameCityIgnoreCase(namecity));
 	}
 
 
 	@Override
+	@LogTracer
 	public List<CityVo> findByCountryNameCountry(String nameCountry) {
 		return CityConverter.toListVo(iCityRepository.findByCountryNameCountry(nameCountry));
 	}
 
 	@Override
+	@LogTracer
 	public CityVo findById(Long id) {
 		Optional<City> cityOptional=iCityRepository.findById(id);
 		CityVo cityVo=new CityVo();
@@ -79,6 +85,7 @@ public class CityServiceImpl implements ICityService {
 	}
 
 	@Override
+	@LogTracer
 	public boolean deleteById(Long id) {
 		boolean checked=true;
 		iCityRepository.deleteById(id);

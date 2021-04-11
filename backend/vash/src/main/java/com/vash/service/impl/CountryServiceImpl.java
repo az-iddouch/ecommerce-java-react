@@ -12,6 +12,7 @@ import com.vash.dao.ICountryRepository;
 import com.vash.domaine.CountryConverter;
 import com.vash.domaine.CountryVo;
 import com.vash.entities.Country;
+import com.vash.security.aop.LogTracer;
 import com.vash.service.ICountryService;
 
 @Service
@@ -22,16 +23,19 @@ public class CountryServiceImpl implements ICountryService{
 	private ICountryRepository iCountryRepository;
 
 	@Override
+	@LogTracer
 	public CountryVo save(CountryVo countryVo) {
 		return CountryConverter.toVo(iCountryRepository.save(CountryConverter.toBo(countryVo)));
 	}
 
 	@Override
+	@LogTracer
 	public List<CountryVo> findAll() {
 		return CountryConverter.toListVo(iCountryRepository.findAll());
 	}
 
 	@Override
+	@LogTracer
 	public CountryVo findById(Long id) {
 		Optional<Country> CountryOptional=iCountryRepository.findById(id);
 		CountryVo countryVo=new CountryVo();
@@ -42,6 +46,7 @@ public class CountryServiceImpl implements ICountryService{
 	}
 
 	@Override
+	@LogTracer
 	public boolean deleteById(Long id) {
 		boolean checked=true;
 		iCountryRepository.deleteById(id);

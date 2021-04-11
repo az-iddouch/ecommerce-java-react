@@ -12,6 +12,7 @@ import com.vash.dao.ITypePropertyRepository;
 import com.vash.domaine.TypePropertyConverter;
 import com.vash.domaine.TypePropertyVo;
 import com.vash.entities.TypeProperty;
+import com.vash.security.aop.LogTracer;
 import com.vash.service.ITypePropertyService;
 
 @Service
@@ -21,16 +22,19 @@ public class TypePropertyServiceImpl implements ITypePropertyService {
 	private ITypePropertyRepository iTypePropertyRepository;
 
 	@Override
+	@LogTracer
 	public TypePropertyVo save(TypePropertyVo typePropertyVo) {
 		return TypePropertyConverter.toVo(iTypePropertyRepository.save(TypePropertyConverter.toBo(typePropertyVo)));
 	}
 
 	@Override
+	@LogTracer
 	public List<TypePropertyVo> findAll() {
 		return TypePropertyConverter.toListVo(iTypePropertyRepository.findAll());
 	}
 
 	@Override
+	@LogTracer
 	public TypePropertyVo findById(Long id) {
 		Optional<TypeProperty> TypePropertyOptional = iTypePropertyRepository.findById(id);
 		TypePropertyVo TypePropertyVo = new TypePropertyVo();
@@ -41,6 +45,7 @@ public class TypePropertyServiceImpl implements ITypePropertyService {
 	}
 
 	@Override
+	@LogTracer
 	public boolean deleteById(Long id) {
 		boolean checked = true;
 		iTypePropertyRepository.deleteById(id);
