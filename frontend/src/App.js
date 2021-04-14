@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Header from './components/Header';
@@ -12,9 +12,23 @@ import Dashboard from './pages/Dashboard';
 import setJWTToken from './securityUtils';
 import { useDispatch } from 'react-redux';
 import { login } from './features/authSlice';
+import axios from 'axios';
 
 function App() {
   const dispatch = useDispatch();
+
+  async function ping() {
+    try {
+      const res = await axios('http://localhost:9091/api/ping');
+      console.log(res.data);
+    } catch (err) {
+      console.error('!!!!!!' + err);
+    }
+  }
+
+  useEffect(() => {
+    ping();
+  }, []);
 
   let user = localStorage.getItem('user');
   if (user) {

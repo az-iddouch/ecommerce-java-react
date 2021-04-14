@@ -1,3 +1,4 @@
+import { ContactSupportOutlined } from '@material-ui/icons';
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import setJWTToken from '../securityUtils';
@@ -60,6 +61,7 @@ export function asyncRegister(
   return async (dispatch) => {
     await axios
       .post('http://localhost:9091/api/users/register', {
+        history,
         firstName,
         lastName,
         email,
@@ -71,8 +73,12 @@ export function asyncRegister(
       .then((res) => {
         dispatch(register(res.data));
         dispatch(setErrors(null));
+        localStorage.setItem('user', JSON.stringify(res.data));
+        setJWTToken(res.data.token);
         history.push('/');
       })
-      .catch((err) => dispatch(setErrors(err.response.data)));
+      .catch((err) => {
+        dispatch(setErrors(err.response.data));
+      });
   };
 }

@@ -7,19 +7,8 @@ import villa from '../images/villa.jpg';
 import house from '../images/house.jpg';
 import studio from '../images/studio.jpg';
 import appartment from '../images/appartment.jpg';
-import { getAllCities } from '../features/citySlice';
-import { useDispatch, useSelector } from 'react-redux';
 
 function Home() {
-  const dispatch = useDispatch();
-  const cities = useSelector((state) => state.cityData.allCities);
-
-  useEffect(() => {
-    dispatch(getAllCities());
-  }, [dispatch]);
-
-  console.log(cities);
-
   return (
     <div className="home">
       <Banner />
@@ -27,43 +16,43 @@ function Home() {
         <h1 className="home__section-title">explore nearby</h1>
         <div className="home__section-contents home__section-contents--explore">
           <CityCard
-            cityName="agadir"
-            src="https://media.istockphoto.com/photos/marina-in-agadir-city-at-sunset-morocco-picture-id845800272?k=6&m=845800272&s=612x612&w=0&h=iu9ocf9hznufnz37ncjekamz-b4co_zraykcacj75_i="
-            numberOfPostings={100}
+            cityName="CASA-BLANCA"
+            src="https://www.visitmorocco.com/sites/default/files/styles/thumbnail_destination_background_top5/public/thumbnails/image/la-mosquee-hassan-ii-au-coucher-du-soleil-a-casablanca-maroc.jpg?itok=-kg3FRws"
+            numberOfPostings={10}
           />
           <CityCard
-            cityName="agadir"
-            src="https://media.istockphoto.com/photos/marina-in-agadir-city-at-sunset-morocco-picture-id845800272?k=6&m=845800272&s=612x612&w=0&h=iu9ocf9hznufnz37ncjekamz-b4co_zraykcacj75_i="
-            numberOfPostings={100}
+            cityName="TANGER"
+            src="https://www.h24info.ma/wp-content/uploads/2019/02/tanger.png"
+            numberOfPostings={3}
           />
           <CityCard
-            cityName="agadir"
-            src="https://media.istockphoto.com/photos/marina-in-agadir-city-at-sunset-morocco-picture-id845800272?k=6&m=845800272&s=612x612&w=0&h=iu9ocf9hznufnz37ncjekamz-b4co_zraykcacj75_i="
-            numberOfPostings={100}
+            cityName="IFRANE"
+            src="https://upload.wikimedia.org/wikipedia/commons/7/71/Neige_ifrane.jpg"
+            numberOfPostings={31}
           />
           <CityCard
-            cityName="agadir"
-            src="https://media.istockphoto.com/photos/marina-in-agadir-city-at-sunset-morocco-picture-id845800272?k=6&m=845800272&s=612x612&w=0&h=iu9ocf9hznufnz37ncjekamz-b4co_zraykcacj75_i="
-            numberOfPostings={100}
+            cityName="MARRAKECH"
+            src="https://static.yabiladi.com/files/articles/90663_b719be9c06a166ad7f16889d5ebc0db220200316172647_thumb_565.jpeg"
+            numberOfPostings={30}
           />
           <CityCard
-            cityName="agadir"
-            src="https://media.istockphoto.com/photos/marina-in-agadir-city-at-sunset-morocco-picture-id845800272?k=6&m=845800272&s=612x612&w=0&h=iu9ocf9hznufnz37ncjekamz-b4co_zraykcacj75_i="
-            numberOfPostings={100}
+            cityName="EL-JADIDA"
+            src="https://www.visitmorocco.com/sites/default/files/styles/thumbnail_events_slider/public/thumbnails/image/port-mazagan-eljadida.jpg?itok=z-rl3ips"
+            numberOfPostings={15}
           />
           <CityCard
-            cityName="agadir"
-            src="https://media.istockphoto.com/photos/marina-in-agadir-city-at-sunset-morocco-picture-id845800272?k=6&m=845800272&s=612x612&w=0&h=iu9ocf9hznufnz37ncjekamz-b4co_zraykcacj75_i="
-            numberOfPostings={100}
+            cityName="AGADIR"
+            src="https://i.le360.ma/fr/sites/default/files/styles/image_la_une_on_home_page/public/assets/images/2020/07/marina-d-agadir.jpg"
+            numberOfPostings={20}
           />
           <CityCard
-            cityName="agadir"
-            src="https://media.istockphoto.com/photos/marina-in-agadir-city-at-sunset-morocco-picture-id845800272?k=6&m=845800272&s=612x612&w=0&h=iu9ocf9hznufnz37ncjekamz-b4co_zraykcacj75_i="
-            numberOfPostings={100}
+            cityName="MEKNES"
+            src="https://www.h24info.ma/wp-content/uploads/2018/10/28c66fb60b85b28db60dc883a5a4f206-meknes.jpg"
+            numberOfPostings={17}
           />
           <CityCard
-            cityName="agadir"
-            src="https://media.istockphoto.com/photos/marina-in-agadir-city-at-sunset-morocco-picture-id845800272?k=6&m=845800272&s=612x612&w=0&h=iu9ocf9hznufnz37ncjekamz-b4co_zraykcacj75_i="
+            cityName="DAKHLA"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpAahDXAfhIoN6yzCLfirWtcpgGBTG97Z0Hs7TLC8nRLZsv6jX8u3U207--ZyaqZFf9Ik&usqp=CAU"
             numberOfPostings={100}
           />
         </div>

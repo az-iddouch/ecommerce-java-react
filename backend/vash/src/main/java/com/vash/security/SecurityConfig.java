@@ -11,8 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 @EnableWebSecurity
@@ -34,23 +37,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Disable CSRF (cross site request forgery)
         http.csrf().disable();
 
-        // No session will be created or used by spring security
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // Entry points
         http.authorizeRequests()
-                .antMatchers("/api/users/login").permitAll()//
                 .antMatchers("/api/users/register").permitAll()//
+                .antMatchers("/api/users/login").permitAll()//
+                .antMatchers("/api/property/**").permitAll()//
                 .antMatchers("/api/city/all").permitAll()//
+                .antMatchers("/api/ping").permitAll()
                 // Disallow everything else..
                 .anyRequest().authenticated();
 
         http.exceptionHandling().accessDeniedPage("/login");
+        // No session will be created or used by spring security
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.apply(new JwtTokenFilterConfigurer(jwtTokenProvider));
 
 
     }
-
 
     @Bean
     @Override
@@ -63,14 +67,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(myCustomUserDetails).passwordEncoder(bCryptPasswordEncoder);
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer()
-    {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:3000");
-            }
-        };
-    }
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer()
+//    {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/**").allowedOrigins("http://localhost:3000")
+//                .allowedMethods("GET", "PUT", "POST", "DELETE", "HEAD", "PATCH");
+//            }
+//        };
+//    }
+
 }
