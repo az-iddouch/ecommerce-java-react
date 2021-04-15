@@ -1,6 +1,7 @@
 package com.vash.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -35,8 +36,7 @@ public class Tags implements Serializable{
 	@JoinTable(name="tagsProperty",
 	joinColumns=@JoinColumn(foreignKey = @ForeignKey(name="fk_tags_property")),
     inverseJoinColumns = @JoinColumn(foreignKey  =@ForeignKey(name="fk_property_tags")))
-	//@Column(name=("property_id"))
-	private List<Property> propertys;
+	private List<Property> propertys = new ArrayList<>();
 	@OneToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_tags_image"))
 	private Image image;

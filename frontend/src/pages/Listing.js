@@ -14,12 +14,14 @@ import { Gallery, Item } from 'react-photoswipe-gallery';
 import 'photoswipe/dist/photoswipe.css';
 import 'photoswipe/dist/default-skin/default-skin.css';
 import './Listing.css';
-import { Button, TextField } from '@material-ui/core';
+import { Button, CircularProgress, TextField } from '@material-ui/core';
 import { useHistory, useLocation, useParams } from 'react-router';
+import axios from 'axios';
 
 function Listing() {
   const [selectedDateStart, setSelectedDateStart] = useState(new Date());
   const [selectedDateEnd, setSelectedDateEnd] = useState(new Date());
+  const [listing, setListing] = useState(null);
 
   const handleStartDateChange = (date) => {
     setSelectedDateStart(date);
@@ -31,126 +33,82 @@ function Listing() {
 
   const { id } = useLocation();
 
+  async function fetchListing(id) {
+    try {
+      const res = await axios.get(
+        `http://localhost:9091/api/property/byid/${id}`
+      );
+      // return res.data;
+      setListing(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     // fetch Listing
-    console.log('fetching data ...' + id);
+    fetchListing(id);
   }, [id]);
+
+  if (!listing) {
+    return <CircularProgress className="loading" />;
+  }
 
   return (
     <div className="listing content">
-      <h2>CHAMBRE ENSOLEILLÉE ET CONFORTABLE // PRIVATE ROOM</h2>
+      <h2>
+        {'[' +
+          listing.typeProperty.type +
+          '] - ' +
+          listing.description.substring(0, 14)}
+      </h2>
       <div className="listing__infos-top">
-        <Star /> 4.15 . <LocationOn /> Agadir, Souss-Massa-Draâ, Morocco
+        <Star /> 4.15 . <LocationOn />{' '}
+        {listing.city.nameCity + ' - ' + listing.address.address}
       </div>
 
       <Gallery>
         <div className="listing__gallery">
-          <Item
-            original="https://placekitten.com/1024/768?image=1"
-            thumbnail="https://placekitten.com/1024/768?image=1"
-            width="1024"
-            height="768"
-          >
-            {({ ref, open }) => (
-              <img
-                alt="cats"
-                ref={ref}
-                onClick={open}
-                src="https://placekitten.com/1024/768?image=1"
-              />
-            )}
-          </Item>
-          <Item
-            original="https://placekitten.com/1024/768?image=2"
-            thumbnail="https://placekitten.com/1024/768?image=2"
-            width="1024"
-            height="768"
-          >
-            {({ ref, open }) => (
-              <img
-                alt="cats"
-                ref={ref}
-                onClick={open}
-                src="https://placekitten.com/1024/768?image=2"
-              />
-            )}
-          </Item>
-          <Item
-            original="https://placekitten.com/1024/768?image=3"
-            thumbnail="https://placekitten.com/1024/768?image=3"
-            width="1024"
-            height="768"
-          >
-            {({ ref, open }) => (
-              <img
-                alt="cats"
-                ref={ref}
-                onClick={open}
-                src="https://placekitten.com/1024/768?image=3"
-              />
-            )}
-          </Item>
-          <Item
-            original="https://placekitten.com/1024/768?image=4"
-            thumbnail="https://placekitten.com/1024/768?image=4"
-            width="1024"
-            height="768"
-          >
-            {({ ref, open }) => (
-              <img
-                alt="cats"
-                ref={ref}
-                onClick={open}
-                src="https://placekitten.com/1024/768?image=4"
-              />
-            )}
-          </Item>
-          <Item
-            original="https://placekitten.com/1024/768?image=5"
-            thumbnail="https://placekitten.com/1024/768?image=5"
-            width="1024"
-            height="768"
-          >
-            {({ ref, open }) => (
-              <img
-                alt="cats"
-                ref={ref}
-                onClick={open}
-                src="https://placekitten.com/1024/768?image=5"
-              />
-            )}
-          </Item>
+          {listing.images.map((image) => (
+            <Item
+              original={image.url}
+              thumbnail={image.url}
+              width="1024"
+              height="768"
+              key={image.id}
+            >
+              {({ ref, open }) => (
+                <img alt="cats" ref={ref} onClick={open} src={image.url} />
+              )}
+            </Item>
+          ))}
         </div>
       </Gallery>
       <div className="listing__content">
         <div className="listing__content--left">
           <h3>Details</h3>
           {/* Surface / Number of rooms / Number of WC / Equipped */}
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam odio
-            maxime ducimus distinctio! Totam, libero dolorum obcaecati tempore
-            eum autem esse corrupti voluptas cum cumque maiores temporibus
-            accusantium similique ea sed dolorem cupiditate dolores molestiae
-            nihil facilis. Porro at optio voluptas esse? Iusto quisquam
-          </p>
+          <p>{listing.description}</p>
           <hr />
           <ul>
             <li>
               <CropOutlinedIcon />
-              Surface: 50 m²
+              {listing.surface}
             </li>
             <li>
               <HomeWorkOutlinedIcon />
-              Rooms: 3
+              Rooms: {listing.numberRoom}
             </li>
             <li>
               <BathtubOutlinedIcon />
-              Bathrooms: 2
+              Bathrooms: {listing.numberWC}
             </li>
-            <li>
-              <WeekendOutlinedIcon />
-              Equipped
-            </li>
+            {listing.equiped ? (
+              <li>
+                <WeekendOutlinedIcon />
+                Equipped
+              </li>
+            ) : null}
           </ul>
           <hr />
           <h3>Amenities</h3>
