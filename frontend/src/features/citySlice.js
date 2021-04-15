@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const citySlice = createSlice({
   name: 'cityData',
-  initialState: { allCities: [], listings: [] },
+  initialState: { allCities: [], listings: [], topCities: [] },
   reducers: {
     setAllCities: {
       reducer(state, { payload }) {
@@ -15,10 +15,15 @@ const citySlice = createSlice({
         state.listings = payload;
       },
     },
+    setTopCities: {
+      reducer(state, { payload }) {
+        state.topCities = payload;
+      },
+    },
   },
 });
 
-export const { setAllCities, setListings } = citySlice.actions;
+export const { setAllCities, setListings, setTopCities } = citySlice.actions;
 export default citySlice.reducer;
 
 export function getAllCities() {
@@ -27,6 +32,17 @@ export function getAllCities() {
       .get('http://localhost:9091/api/city/all')
       .then((res) => {
         dispatch(setAllCities(res.data));
+      })
+      .catch((err) => console.log(err));
+  };
+}
+
+export function getTopCities() {
+  return async (dispatch) => {
+    await axios
+      .get('http://localhost:9091/api/city/vTopEightVilleVo')
+      .then((res) => {
+        dispatch(setTopCities(res.data));
       })
       .catch((err) => console.log(err));
   };

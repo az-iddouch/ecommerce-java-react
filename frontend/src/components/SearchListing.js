@@ -1,8 +1,10 @@
 import { FavoriteBorderOutlined, Star } from '@material-ui/icons';
 import React from 'react';
+import { Redirect, useHistory } from 'react-router';
 import './SearchListing.css';
 
 function SearchListing({
+  id,
   img,
   location,
   title,
@@ -11,8 +13,17 @@ function SearchListing({
   price,
   total,
 }) {
+  const history = useHistory();
+  function handleClick(e) {
+    console.log('clicked ..' + id);
+    history.push({
+      pathname: '/listings',
+      id: id,
+    });
+  }
+
   return (
-    <div className="search-listing">
+    <div className="search-listing" onClick={(e) => handleClick(e)}>
       <div className="search-listing__img">
         <img src={img} alt="" />
       </div>

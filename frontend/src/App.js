@@ -50,7 +50,7 @@ function App() {
             <SearchPage />
             <Footer />
           </Route>
-          <Route path="/listings/:id">
+          <Route path="/listings">
             <Header />
             <Listing />
             <Footer />

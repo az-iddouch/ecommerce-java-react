@@ -90,7 +90,7 @@ public class CityController {
 	@GetMapping(value = "/vTopEightVilleVo")
 	public ResponseEntity<Object> findAllvTopEightVilleVo() {
 		List<VTopEightVilleVo> vTopEightVilleVos=new ArrayList<VTopEightVilleVo>();
-		vTopEightVilleVos= iVTopEightVilleService.findAll();
+		vTopEightVilleVos = iVTopEightVilleService.findAll();
 		if (ObjectUtils.isEmpty(vTopEightVilleVos)) {
 			return new ResponseEntity<>("doesn't exist", HttpStatus.OK);
 		}

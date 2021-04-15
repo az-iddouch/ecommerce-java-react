@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/users/register").permitAll()//
                 .antMatchers("/api/users/login").permitAll()//
                 .antMatchers("/api/property/**").permitAll()//
-                .antMatchers("/api/city/all").permitAll()//
+                .antMatchers("/api/city/**").permitAll()//
                 .antMatchers("/api/ping").permitAll()
                 // Disallow everything else..
                 .anyRequest().authenticated();

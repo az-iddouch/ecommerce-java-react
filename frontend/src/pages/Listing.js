@@ -9,12 +9,13 @@ import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Gallery, Item } from 'react-photoswipe-gallery';
 import 'photoswipe/dist/photoswipe.css';
 import 'photoswipe/dist/default-skin/default-skin.css';
 import './Listing.css';
 import { Button, TextField } from '@material-ui/core';
+import { useHistory, useLocation, useParams } from 'react-router';
 
 function Listing() {
   const [selectedDateStart, setSelectedDateStart] = useState(new Date());
@@ -27,6 +28,14 @@ function Listing() {
   const handleEndDateChange = (date) => {
     setSelectedDateEnd(date);
   };
+
+  const { id } = useLocation();
+
+  useEffect(() => {
+    // fetch Listing
+    console.log('fetching data ...' + id);
+  }, [id]);
+
   return (
     <div className="listing content">
       <h2>CHAMBRE ENSOLEILLÉE ET CONFORTABLE // PRIVATE ROOM</h2>
@@ -160,7 +169,7 @@ function Listing() {
                 variant="inline"
                 format="MM/dd/yyyy"
                 margin="normal"
-                id="date-picker-inline"
+                id="date-picker-inline1"
                 label="Start date"
                 value={selectedDateStart}
                 onChange={handleStartDateChange}

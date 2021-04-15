@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function SearchPage() {
   const listings = useSelector((state) => state.cityData.listings);
+
   return (
     <div className="search-page content">
       <div className="search-page__infos">
@@ -23,7 +24,7 @@ function SearchPage() {
         listings.map((listing) => {
           return (
             <SearchListing
-              img="https://cdn.decorilla.com/online-decorating/wp-content/uploads/2020/05/Home-Decor-NYC-Luxurious-New-York-Apartment.jpg"
+              id={listing.id}
               location={listing.city.nameCity + ' - ' + listing.address.address}
               title={
                 '[' +
@@ -35,6 +36,12 @@ function SearchPage() {
               star={4.5}
               price={listing.price}
               total={parseFloat(listing.price) * 6}
+              key={listing.id}
+              img={
+                listing.images.length > 0
+                  ? listing.images[0].url
+                  : 'https://cdn.decorilla.com/online-decorating/wp-content/uploads/2020/05/Home-Decor-NYC-Luxurious-New-York-Apartment.jpg'
+              }
             />
           );
         })}

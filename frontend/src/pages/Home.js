@@ -9,6 +9,10 @@ import studio from '../images/studio.jpg';
 import appartment from '../images/appartment.jpg';
 
 function Home() {
+  useEffect(() => {
+    // fetch cities
+  }, []);
+
   return (
     <div className="home">
       <Banner />

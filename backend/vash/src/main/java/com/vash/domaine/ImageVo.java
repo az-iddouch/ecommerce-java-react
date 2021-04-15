@@ -17,9 +17,9 @@ public class ImageVo  implements Serializable{
 	private Long id;
 	private String url;
 
-	private PropertyVo property;
-
-	private UserVo user;
-
-	private TagsVo tag;
+//	private PropertyVo property;
+//
+//	private UserVo user;
+//
+//	private TagsVo tag;
 }
