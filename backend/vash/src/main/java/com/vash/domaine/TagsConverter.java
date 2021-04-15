@@ -17,7 +17,7 @@ public class TagsConverter {
 			tag.setId(tagsVo.getId());
 			tag.setNameTag(tagsVo.getNameTag());
 			tag.setImage(ImageConverter.toBo(tagsVo.getImage()));
-			tag.setPropertys(PropertyConvert.toListBo(tagsVo.getPropertys()));
+			//tag.setPropertys(PropertyConvert.toListBo(tagsVo.getPropertys()));
 		}
 		return tag;
 	}
@@ -29,7 +29,7 @@ public class TagsConverter {
 			tagVo.setId(tags.getId());
 			tagVo.setNameTag(tags.getNameTag());
 			tagVo.setImage(ImageConverter.toVo(tags.getImage()));
-			tagVo.setPropertys(PropertyConvert.toListVo(tags.getPropertys()));
+		//	tagVo.setPropertys(PropertyConvert.toListVo(tags.getPropertys()));
 		}
 		return tagVo;
 	}
