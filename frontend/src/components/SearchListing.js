@@ -3,16 +3,7 @@ import React from 'react';
 import { Redirect, useHistory } from 'react-router';
 import './SearchListing.css';
 
-function SearchListing({
-  id,
-  img,
-  location,
-  title,
-  description,
-  star,
-  price,
-  total,
-}) {
+function SearchListing({ id, img, location, title, description, star, price }) {
   const history = useHistory();
   function handleClick(e) {
     console.log('clicked ..' + id);
@@ -42,7 +33,6 @@ function SearchListing({
           </div>
           <div className="search-listing__price">
             <h2>{price}</h2>
-            <p>{total}</p>
           </div>
         </div>
       </div>

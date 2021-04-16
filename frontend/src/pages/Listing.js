@@ -3,6 +3,7 @@ import CropOutlinedIcon from '@material-ui/icons/CropOutlined';
 import BathtubOutlinedIcon from '@material-ui/icons/BathtubOutlined';
 import HomeWorkOutlinedIcon from '@material-ui/icons/HomeWorkOutlined';
 import WeekendOutlinedIcon from '@material-ui/icons/WeekendOutlined';
+import DoneIcon from '@material-ui/icons/Done';
 import DateFnsUtils from '@date-io/date-fns';
 import 'date-fns';
 import {
@@ -14,7 +15,7 @@ import { Gallery, Item } from 'react-photoswipe-gallery';
 import 'photoswipe/dist/photoswipe.css';
 import 'photoswipe/dist/default-skin/default-skin.css';
 import './Listing.css';
-import { Button, CircularProgress, TextField } from '@material-ui/core';
+import { Button, Chip, CircularProgress, TextField } from '@material-ui/core';
 import { useHistory, useLocation, useParams } from 'react-router';
 import axios from 'axios';
 
@@ -113,13 +114,21 @@ function Listing() {
           <hr />
           <h3>Amenities</h3>
           <p>
-            Kitchen . Lock on bedroom door . Free street parking . Essentials
+            {listing.tags.map((tag) => (
+              <Chip
+                key={tag.id}
+                className="listing__amenities-tags"
+                label={tag.nameTag}
+                deleteIcon={<DoneIcon />}
+                variant="outlined"
+              />
+            ))}
           </p>
         </div>
         <div className="listing__content--right">
           <div className="listing__content--right-card">
             <h2>
-              MAD120 <span>/night</span>
+              MAD {listing.price} <span>/night</span>
             </h2>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDatePicker

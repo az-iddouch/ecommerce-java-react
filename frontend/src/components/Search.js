@@ -9,18 +9,27 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { getAllCities, getListingsByCity } from '../features/citySlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import {
+  setShowSearch,
+  setNumberOfPeople,
+  setStartDate,
+  setEndDate,
+} from '../features/commonSlice';
 
 function Search() {
   const [city, setCity] = useState('');
   const dispatch = useDispatch();
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const startDate = useSelector((state) => state.commonState.startDate);
+  const endDate = useSelector((state) => state.commonState.endDate);
   const listOfCities = useSelector((state) => state.cityData.allCities);
+  const numberOfPeople = useSelector(
+    (state) => state.commonState.numberOfPeople
+  );
   const history = useHistory();
 
   const selectionRange = {
-    startDate: startDate,
-    endDate: endDate,
+    startDate: new Date(startDate),
+    endDate: new Date(endDate),
     key: 'selection',
     color: '#00d382',
   };
@@ -33,12 +42,14 @@ function Search() {
     if (city && city.length > 0) {
       const cityId = city.split('_')[0];
       dispatch(getListingsByCity(cityId, history));
+      dispatch(setShowSearch(false));
+      console.log([new Date(startDate), new Date(endDate)]);
     }
   }
 
   function handleSelect(ranges) {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
+    dispatch(setStartDate(ranges.selection.startDate.toString()));
+    dispatch(setEndDate(ranges.selection.endDate.toString()));
   }
 
   return (
@@ -48,6 +59,10 @@ function Search() {
         <div className="search__additionals--persons">
           <h2>Number of guests</h2>
           <TextField
+            onChange={(e) =>
+              dispatch(setNumberOfPeople(parseInt(e.target.value)))
+            }
+            value={numberOfPeople}
             type="number"
             InputLabelProps={{
               shrink: true,

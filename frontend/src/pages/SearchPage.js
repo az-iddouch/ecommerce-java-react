@@ -2,7 +2,7 @@ import { Button } from '@material-ui/core';
 import React from 'react';
 import SearchListing from '../components/SearchListing';
 import './SearchPage.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function SearchPage() {
   const listings = useSelector((state) => state.cityData.listings);
@@ -30,12 +30,12 @@ function SearchPage() {
                 '[' +
                 listing.typeProperty.type +
                 '] - ' +
-                listing.description.substring(0, 14)
+                listing.description.substring(0, 14) +
+                (listing.description.length > 14 ? '...' : '')
               }
               description={listing.description}
               star={4.5}
               price={listing.price}
-              total={parseFloat(listing.price) * 6}
               key={listing.id}
               img={
                 listing.images.length > 0

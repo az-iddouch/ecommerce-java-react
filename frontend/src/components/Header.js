@@ -4,12 +4,13 @@ import { Avatar, Button } from '@material-ui/core';
 import Search from './Search';
 import './Header.css';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setShowSearch } from '../features/commonSlice';
 
 function Header() {
-  const [showSearch, setShowSearch] = useState(false);
   const user = useSelector((state) => state.auth.user);
-
+  const showSearch = useSelector((state) => state.commonState.showSearch);
+  const dispatch = useDispatch();
   return (
     <div className="header">
       <div className="header__logo">
@@ -20,7 +21,7 @@ function Header() {
       <div className="header__center">
         <Button
           className="header__search-btn"
-          onClick={() => setShowSearch(!showSearch)}
+          onClick={() => dispatch(setShowSearch(!showSearch))}
         >
           {showSearch ? 'Hide search' : 'Start your search'}
           <SearchIcon />

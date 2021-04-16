@@ -95,6 +95,10 @@
   padding-right: 17px;
 }
 
+.listing__amenities-tags {
+  margin-right: 1rem;
+}
+
 .listing__content--right {
   margin-left: 38px;
   width: 35%;
