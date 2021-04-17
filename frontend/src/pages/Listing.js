@@ -1,4 +1,5 @@
 import { LocationOn, Star } from '@material-ui/icons';
+import { unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core';
 import CropOutlinedIcon from '@material-ui/icons/CropOutlined';
 import BathtubOutlinedIcon from '@material-ui/icons/BathtubOutlined';
 import HomeWorkOutlinedIcon from '@material-ui/icons/HomeWorkOutlined';
@@ -16,20 +17,30 @@ import 'photoswipe/dist/photoswipe.css';
 import 'photoswipe/dist/default-skin/default-skin.css';
 import './Listing.css';
 import { Button, Chip, CircularProgress, TextField } from '@material-ui/core';
-import { useHistory, useLocation, useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  setNumberOfPeople,
+  setStartDate,
+  setEndDate,
+} from '../features/commonSlice';
 
 function Listing() {
-  const [selectedDateStart, setSelectedDateStart] = useState(new Date());
-  const [selectedDateEnd, setSelectedDateEnd] = useState(new Date());
+  const dispatch = useDispatch();
   const [listing, setListing] = useState(null);
+  const numberOfPeople = useSelector(
+    (state) => state.commonState.numberOfPeople
+  );
+  const startDate = useSelector((state) => state.commonState.startDate);
+  const endDate = useSelector((state) => state.commonState.endDate);
 
   const handleStartDateChange = (date) => {
-    setSelectedDateStart(date);
+    dispatch(setStartDate(date.toString()));
   };
 
   const handleEndDateChange = (date) => {
-    setSelectedDateEnd(date);
+    dispatch(setEndDate(date.toString()));
   };
 
   const { id } = useLocation();
@@ -88,7 +99,6 @@ function Listing() {
       <div className="listing__content">
         <div className="listing__content--left">
           <h3>Details</h3>
-          {/* Surface / Number of rooms / Number of WC / Equipped */}
           <p>{listing.description}</p>
           <hr />
           <ul>
@@ -113,7 +123,7 @@ function Listing() {
           </ul>
           <hr />
           <h3>Amenities</h3>
-          <p>
+          <div>
             {listing.tags.map((tag) => (
               <Chip
                 key={tag.id}
@@ -123,7 +133,7 @@ function Listing() {
                 variant="outlined"
               />
             ))}
-          </p>
+          </div>
         </div>
         <div className="listing__content--right">
           <div className="listing__content--right-card">
@@ -138,7 +148,7 @@ function Listing() {
                 margin="normal"
                 id="date-picker-inline1"
                 label="Start date"
-                value={selectedDateStart}
+                value={startDate}
                 onChange={handleStartDateChange}
                 KeyboardButtonProps={{
                   'aria-label': 'change date',
@@ -153,14 +163,21 @@ function Listing() {
                 margin="normal"
                 id="date-picker-inline"
                 label="End date"
-                value={selectedDateEnd}
+                value={endDate}
                 onChange={handleEndDateChange}
                 KeyboardButtonProps={{
                   'aria-label': 'change date',
                 }}
               />
             </MuiPickersUtilsProvider>
-            <TextField type="number" label="Number of guests" />
+            <TextField
+              type="number"
+              label="Number of guests"
+              value={numberOfPeople}
+              onChange={(e) =>
+                dispatch(setNumberOfPeople(parseInt(e.target.value)))
+              }
+            />
             <Button>Reserve</Button>
           </div>
         </div>

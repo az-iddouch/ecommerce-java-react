@@ -32,7 +32,7 @@ function SearchListing({ id, img, location, title, description, star, price }) {
             <strong>{star}</strong>
           </div>
           <div className="search-listing__price">
-            <h2>{price}</h2>
+            <h2>DH {price}</h2>
           </div>
         </div>
       </div>

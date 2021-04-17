@@ -43,7 +43,6 @@ function Search() {
       const cityId = city.split('_')[0];
       dispatch(getListingsByCity(cityId, history));
       dispatch(setShowSearch(false));
-      console.log([new Date(startDate), new Date(endDate)]);
     }
   }
 
@@ -80,6 +79,7 @@ function Search() {
               listOfCities &&
               listOfCities.map((option) => option.id + '_' + option.nameCity)
             }
+            value={city}
             renderInput={(params) => (
               <TextField {...params} margin="normal" variant="outlined" />
             )}

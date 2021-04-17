@@ -122,5 +122,6 @@
 }
 
 .listing__content--right-card > button:hover {
-  background-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: rgb(238, 238, 238);
 }
