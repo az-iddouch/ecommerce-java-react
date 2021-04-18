@@ -51,18 +51,34 @@ export default function SignUp() {
 
   function submitRegister(event) {
     event.preventDefault();
-    dispatch(
-      asyncRegister(
-        history,
-        firstName,
-        lastName,
-        email,
-        userName,
-        phoneNumber1,
-        phoneNumber2,
-        password
-      )
-    );
+
+    let valid = true;
+
+    // password match validation
+    [...password].forEach((char, i) => {
+      if (char !== passwordConfirm.charAt(i)) {
+        valid = false;
+      }
+    });
+
+    if (valid) {
+      dispatch(
+        asyncRegister(
+          history,
+          firstName,
+          lastName,
+          email,
+          userName,
+          phoneNumber1,
+          phoneNumber2,
+          password
+        )
+      );
+    } else {
+      setPasswordConfirm('');
+      setPassword('');
+      dispatch(setErrors({ password: 'password does not match !' }));
+    }
   }
 
   return (
@@ -142,7 +158,7 @@ export default function SignUp() {
                 value={phoneNumber1}
                 name="telephone"
                 autoComplete="telephone1"
-                onChange={(e) => setPhoneNumber1(e.target.value)}
+                onChange={(e) => setPhoneNumber1(e.target.value.slice(0, 10))}
                 error={errors && errors.phoneNumber1 ? true : false}
                 helperText={
                   errors && errors.phoneNumber1 ? errors.phoneNumber1 : ''
@@ -158,7 +174,7 @@ export default function SignUp() {
                 name="telephone2"
                 value={phoneNumber2}
                 autoComplete="telephone2"
-                onChange={(e) => setPhoneNumber2(e.target.value)}
+                onChange={(e) => setPhoneNumber2(e.target.value.slice(0, 10))}
               />
             </Grid>
             <Grid item xs={12}>

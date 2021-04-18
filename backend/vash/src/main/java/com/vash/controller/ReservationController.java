@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.vash.domaine.PropertyVo;
 import com.vash.domaine.UserVo;
 import com.vash.entities.EStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class ReservationController {
 	@PostMapping(value="/save")
 	public ResponseEntity<?> save(Principal principal, @RequestParam(value="numberPersons")String numberPersons,@RequestParam(value="dateStart")Date dateStart,@RequestParam(value="dateEnd") Date dateEnd, @RequestParam(value="idProperty")String idProperty){
 
+		PropertyVo propertyVo = iPropertyService.findById(Long.valueOf(idProperty));
 		UserVo loggedInUser = iUserService.findByUserName(principal.getName());
 		ReservationVo reservationVo=new ReservationVo();
 		reservationVo.setDateEnd((dateEnd));
@@ -45,7 +47,8 @@ public class ReservationController {
 		reservationVo.setDateStart(dateStart);
 		reservationVo.setNumberPersons(Integer.valueOf(numberPersons));
 		reservationVo.setUser(loggedInUser);
-		reservationVo.setProperty(iPropertyService.findById(Long.valueOf(idProperty)));
+		reservationVo.setProperty(propertyVo);
+		propertyVo.getReservations().add(reservationVo);
 		ReservationVo created = iReservationService.save(reservationVo);
 		if(created != null) {
 			return ResponseEntity.created(null).body(created);

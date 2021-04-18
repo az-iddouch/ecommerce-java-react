@@ -33,7 +33,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         } catch (AuthCustomException ex) {
             //this is very important, since it guarantees the user is not authenticated at all
             SecurityContextHolder.clearContext();
-
             return;
         }
 
