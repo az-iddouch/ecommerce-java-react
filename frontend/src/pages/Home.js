@@ -8,15 +8,17 @@ import house from '../images/house.jpg';
 import studio from '../images/studio.jpg';
 import appartment from '../images/appartment.jpg';
 import { getTopCities } from '../features/citySlice';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Home() {
-  const topCities = useSelector((state) => state.cityData.allCities);
+  const topCities = useSelector((state) => state.cityData.topCities);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // fetch cities
-    getTopCities();
-  }, []);
+    console.log('loading page ...');
+    dispatch(getTopCities());
+  }, [dispatch]);
 
   return (
     <div className="home">
