@@ -16,12 +16,12 @@ public class Mail implements IMailService {
 
 	@Override
 	@LogExecutionTime
-	public void sendEmail(String to, String subject, String text) {
+	public void sendEmail(String to, String subject, String content) {
 		SimpleMailMessage msg = new SimpleMailMessage();
 		msg.setTo(to);
 		msg.setFrom("www.vash.com");
 		msg.setSubject(subject);
-		msg.setText(text);
+		msg.setText(content);
 		javaMailSender.send(msg);
 	}
 }
