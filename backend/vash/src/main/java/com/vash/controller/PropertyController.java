@@ -29,7 +29,7 @@ public class PropertyController {
 	
 
 	@PostMapping(value = "/save")
-	public ResponseEntity<Object> save(@Valid @RequestBody String userid) {
+	public ResponseEntity<?> save(@Valid @RequestBody String userid) {
 //		CityVo cityVo=iCityService.findById(1L);
 //		TypePropertyVo typePropertyVo=iTypePropertyService.findById(1L);
 //		//TagsVo tagsVo= iTagsService.findAllByIds(ids);
@@ -62,7 +62,7 @@ public class PropertyController {
 
 	// findAll
 	@GetMapping(value = "/findAll")
-	public ResponseEntity<Object> findAll() {
+	public ResponseEntity<?> findAll() {
 		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
 		propertyVos = iPropertyService.findAll();
 		if (ObjectUtils.isEmpty(propertyVos)) {
@@ -73,7 +73,7 @@ public class PropertyController {
 
 //property je dis chercher par l'id dial city 
 	@GetMapping(value = "/{idCity}")
-	public ResponseEntity<Object> findByCityNameCity(@PathVariable(value = "idCity") String idCity) {
+	public ResponseEntity<?> findByCityNameCity(@PathVariable(value = "idCity") String idCity) {
 		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
 		if (!ObjectUtils.isEmpty(idCity)) {
 			propertyVos = iPropertyService.findByCityId(Long.valueOf(idCity));
@@ -86,7 +86,7 @@ public class PropertyController {
 
 	// findByCityNameCityAndVisibleTrue
 	@GetMapping(value = "/visible/{idCity}")
-	public ResponseEntity<Object> find(@PathVariable(value = "idCity") String idCity) {
+	public ResponseEntity<?> find(@PathVariable(value = "idCity") String idCity) {
 
 		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
 		propertyVos = iPropertyService.findByCityIdAndVisibleTrue(Long.valueOf(idCity));
@@ -97,7 +97,7 @@ public class PropertyController {
 	}
 
 	@GetMapping(value = "/visible/{idCity}/{numberMaxPersons}")
-	public ResponseEntity<Object> find(@PathVariable(value = "idCity") String idCity,
+	public ResponseEntity<?> find(@PathVariable(value = "idCity") String idCity,
 			@PathVariable(value = "numberMaxPersons") String numberMaxPersons) {
 
 		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
@@ -112,7 +112,7 @@ public class PropertyController {
 	}
 
 	@GetMapping(value="/typePropertyId/{id}")
-	public ResponseEntity<Object> findByTypePropertyId(@PathVariable(value="id") String id){
+	public ResponseEntity<?> findByTypePropertyId(@PathVariable(value="id") String id){
 		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
 		if(!ObjectUtils.isEmpty(id)){
 			propertyVos = iPropertyService.findByTypePropertyId(Long.valueOf(id));
@@ -124,7 +124,7 @@ public class PropertyController {
 	}
 
 	@GetMapping(value="/byid/{id}")
-	public ResponseEntity<Object> findPropertyById(@PathVariable(value="id") String id){
+	public ResponseEntity<?> findPropertyById(@PathVariable(value="id") String id){
 		PropertyVo propertyVo = new PropertyVo();
 		if(!ObjectUtils.isEmpty(id)){
 			propertyVo = iPropertyService.findById(Long.valueOf(id));

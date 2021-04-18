@@ -13,6 +13,7 @@ public class VTopEightVilleConverter {
 		vTopEightVille.setCounter(vTopEightVilleVo.getCounter());
 		vTopEightVille.setCountryId(vTopEightVilleVo.getCountryId());
 		vTopEightVille.setNameCity(vTopEightVilleVo.getNameCity());
+		vTopEightVille.setUrl(vTopEightVilleVo.getUrl());
 		return vTopEightVille;
 	}
 
@@ -22,6 +23,7 @@ public class VTopEightVilleConverter {
 		vTopEightVilleVo.setCounter(vTopEightVille.getCounter());
 		vTopEightVilleVo.setCountryId(vTopEightVille.getCountryId());
 		vTopEightVilleVo.setNameCity(vTopEightVille.getNameCity());
+		vTopEightVilleVo.setUrl(vTopEightVille.getUrl());
 		return vTopEightVilleVo;
 	}
 
