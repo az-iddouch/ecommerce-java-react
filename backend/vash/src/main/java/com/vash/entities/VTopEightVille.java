@@ -21,4 +21,5 @@ public class VTopEightVille implements Serializable {
 	private String nameCity;
 	private Long countryId;
 	private Integer counter;
+	private String url;
 }
