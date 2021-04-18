@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.vash.utils.Constants;
+import com.vash.service.IMailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,11 +35,17 @@ public class ReservationServiceImpl implements IReservationService {
 	private IPropertyService iPropertyService;
 	@Autowired
 	private ICityService iCityService;
+	@Autowired
+	private IMailService iMailService;
 
 	@Override
 	@LogTracer
 	public ReservationVo save(ReservationVo reservationVo) {
-		return ReservationConvert.toVo(iReservationRepository.save(ReservationConvert.toBo(reservationVo)));
+		ReservationVo reservationVo1 = ReservationConvert.toVo(iReservationRepository.save(ReservationConvert.toBo(reservationVo)));
+		if(!ObjectUtils.isEmpty(reservationVo1)){
+			iMailService.sendEmail(reservationVo1.getProperty().getUser().getEmail(), Constants.EMAIL_SUBJECT, iMailService.createMailContent(reservationVo1) );
+		}
+		return reservationVo1;
 	}
 
 	@Override

@@ -8,6 +8,8 @@ const commonSlice = createSlice({
     startDate: new Date().toString(),
     endDate: new Date().toString(),
     numberOfPeople: 1,
+    notification: null,
+    selectedPropertyId: null,
   },
   reducers: {
     setShowSearch: {
@@ -30,6 +32,16 @@ const commonSlice = createSlice({
         state.endDate = payload;
       },
     },
+    setNotification: {
+      reducer(state, { payload }) {
+        state.notification = payload;
+      },
+    },
+    setSelectedPropertyId: {
+      reducer(state, { payload }) {
+        state.selectedPropertyId = payload;
+      },
+    },
   },
 });
 
@@ -38,5 +50,7 @@ export const {
   setNumberOfPeople,
   setStartDate,
   setEndDate,
+  setNotification,
+  setSelectedPropertyId,
 } = commonSlice.actions;
 export default commonSlice.reducer;

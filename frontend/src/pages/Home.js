@@ -16,7 +16,6 @@ function Home() {
 
   useEffect(() => {
     // fetch cities
-    console.log('loading page ...');
     dispatch(getTopCities());
   }, [dispatch]);
 
@@ -30,7 +29,8 @@ function Home() {
             topCities.map((city) => (
               <CityCard
                 cityName={city.nameCity}
-                src="https://www.visitmorocco.com/sites/default/files/styles/thumbnail_destination_background_top5/public/thumbnails/image/la-mosquee-hassan-ii-au-coucher-du-soleil-a-casablanca-maroc.jpg?itok=-kg3FRws"
+                src={city.url}
+                key={city.id}
                 numberOfPostings={city.counter}
               />
             ))}

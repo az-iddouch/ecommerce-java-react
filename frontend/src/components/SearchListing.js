@@ -1,16 +1,16 @@
 import { FavoriteBorderOutlined, Star } from '@material-ui/icons';
 import React from 'react';
-import { Redirect, useHistory } from 'react-router';
+import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setSelectedPropertyId } from '../features/commonSlice';
 import './SearchListing.css';
 
 function SearchListing({ id, img, location, title, description, star, price }) {
   const history = useHistory();
+  const dispatch = useDispatch();
   function handleClick(e) {
-    console.log('clicked ..' + id);
-    history.push({
-      pathname: '/listings',
-      id: id,
-    });
+    dispatch(setSelectedPropertyId(id));
+    history.push('/listings');
   }
 
   return (

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.vash.domaine.UserVo;
+import com.vash.entities.EStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
@@ -19,7 +21,6 @@ import com.vash.domaine.ReservationVo;
 import com.vash.service.IPropertyService;
 import com.vash.service.IReservationService;
 import com.vash.service.IUserService;
-import com.vash.utils.IMailService;
 
 @RestController
 @RequestMapping(value="/api/reservation")
@@ -31,29 +32,26 @@ public class ReservationController {
 	private IUserService iUserService;
 	@Autowired
 	private IPropertyService iPropertyService;
-	@Autowired
-	private IMailService iMailService;
-	
 
-	@PostMapping(value="/save/{numberPersons}/{dateStart}/{dateEnd}/{status}/{idProperty}/{idUser}")
-	public ResponseEntity<?> save(@RequestParam(value="numberPersons")String numberPersons,@RequestParam(value="dateStart")Date dateStart,@RequestParam(value="dateEnd") Date dateEnd,@RequestParam(value="status")String status,@RequestParam(value="idProperty")String idProperty,@RequestParam(value="idUser")String idUser){
 
+
+	@PostMapping(value="/save")
+	public ResponseEntity<?> save(Principal principal, @RequestParam(value="numberPersons")String numberPersons,@RequestParam(value="dateStart")Date dateStart,@RequestParam(value="dateEnd") Date dateEnd, @RequestParam(value="idProperty")String idProperty){
+
+		UserVo loggedInUser = iUserService.findByUserName(principal.getName());
 		ReservationVo reservationVo=new ReservationVo();
 		reservationVo.setDateEnd((dateEnd));
-		reservationVo.setStatus(status);
+		reservationVo.setStatus(EStatus.PENDING.name());
 		reservationVo.setDateStart(dateStart);
 		reservationVo.setNumberPersons(Integer.valueOf(numberPersons));
-		reservationVo.setUser(iUserService.findById(Long.valueOf(idUser)));
+		reservationVo.setUser(loggedInUser);
 		reservationVo.setProperty(iPropertyService.findById(Long.valueOf(idProperty)));
-		
-//		if(ObjectUtils.isEmpty(iReservationService.save(reservationVo))){
-//			return new ResponseEntity<>("Reservation is created successfully", HttpStatus.CREATED);
-//		}
-		String to="";
-		String subject="Reservation";
-		String text="";
-		iMailService.sendEmail(to,subject,text);
-		return  ResponseEntity.created(null).body(iReservationService.save(reservationVo));
+		ReservationVo created = iReservationService.save(reservationVo);
+		if(created != null) {
+			return ResponseEntity.created(null).body(created);
+		}
+
+		return ResponseEntity.badRequest().body(null);
 	}
 	
 	public String  recupUserName(Principal principal){

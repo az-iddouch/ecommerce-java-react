@@ -17,7 +17,7 @@ import 'photoswipe/dist/photoswipe.css';
 import 'photoswipe/dist/default-skin/default-skin.css';
 import './Listing.css';
 import { Button, Chip, CircularProgress, TextField } from '@material-ui/core';
-import { useLocation, useParams } from 'react-router';
+import { useHistory, useLocation, useParams } from 'react-router';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -25,8 +25,10 @@ import {
   setStartDate,
   setEndDate,
 } from '../features/commonSlice';
+import { makeReservation } from '../features/reservationSlice';
 
 function Listing() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [listing, setListing] = useState(null);
   const numberOfPeople = useSelector(
@@ -34,6 +36,9 @@ function Listing() {
   );
   const startDate = useSelector((state) => state.commonState.startDate);
   const endDate = useSelector((state) => state.commonState.endDate);
+  const selectedPropertyId = useSelector(
+    (state) => state.commonState.selectedPropertyId
+  );
 
   const handleStartDateChange = (date) => {
     dispatch(setStartDate(date.toString()));
@@ -42,8 +47,6 @@ function Listing() {
   const handleEndDateChange = (date) => {
     dispatch(setEndDate(date.toString()));
   };
-
-  const { id } = useLocation();
 
   async function fetchListing(id) {
     try {
@@ -59,8 +62,21 @@ function Listing() {
 
   useEffect(() => {
     // fetch Listing
-    fetchListing(id);
-  }, [id]);
+    fetchListing(selectedPropertyId);
+  }, [selectedPropertyId]);
+
+  function makeReservationHandker() {
+    console.log('clicked .....===...===..');
+    dispatch(
+      makeReservation(
+        startDate,
+        endDate,
+        numberOfPeople,
+        selectedPropertyId,
+        history
+      )
+    );
+  }
 
   if (!listing) {
     return <CircularProgress className="loading" />;
@@ -178,7 +194,7 @@ function Listing() {
                 dispatch(setNumberOfPeople(parseInt(e.target.value)))
               }
             />
-            <Button>Reserve</Button>
+            <Button onClick={makeReservationHandker}>Reserve</Button>
           </div>
         </div>
       </div>

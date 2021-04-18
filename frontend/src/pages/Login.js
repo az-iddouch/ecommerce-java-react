@@ -14,10 +14,12 @@ import './Login.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { asyncLogin } from '../features/authSlice';
 import { useHistory } from 'react-router';
+import { Alert, AlertTitle } from '@material-ui/lab';
 
 export default function SignIn() {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const notification = useSelector((state) => state.commonState.notification);
 
   const errors = useSelector((state) => state.auth.errors);
   const dispatch = useDispatch();
@@ -76,6 +78,16 @@ export default function SignIn() {
               </Link>
             </Grid>
           </Grid>
+          {notification && (
+            <Grid container>
+              <Grid item>
+                <Alert severity="warning">
+                  <AlertTitle>Warning</AlertTitle>
+                  {notification}
+                </Alert>
+              </Grid>
+            </Grid>
+          )}
         </form>
       </div>
     </Container>

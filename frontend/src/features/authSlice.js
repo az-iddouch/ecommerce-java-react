@@ -42,7 +42,7 @@ export function asyncLogin(history, userName, password) {
         localStorage.setItem('user', JSON.stringify(res.data));
         setJWTToken(res.data.token);
         dispatch(setErrors(null));
-        history.push('/');
+        history.goBack();
       })
       .catch((err) => dispatch(setErrors(err.response.data)));
   };
