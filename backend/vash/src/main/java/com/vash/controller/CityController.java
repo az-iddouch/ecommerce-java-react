@@ -91,9 +91,6 @@ public class CityController {
 	public ResponseEntity<Object> findAllvTopEightVilleVo() {
 		List<VTopEightVilleVo> vTopEightVilleVos=new ArrayList<VTopEightVilleVo>();
 		vTopEightVilleVos = iVTopEightVilleService.findAll();
-		if (ObjectUtils.isEmpty(vTopEightVilleVos)) {
-			return new ResponseEntity<>("doesn't exist", HttpStatus.OK);
-		}
 		return new ResponseEntity<>(vTopEightVilleVos,HttpStatus.OK);
 	}
 }

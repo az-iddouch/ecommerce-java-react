@@ -7,10 +7,15 @@ import villa from '../images/villa.jpg';
 import house from '../images/house.jpg';
 import studio from '../images/studio.jpg';
 import appartment from '../images/appartment.jpg';
+import { getTopCities } from '../features/citySlice';
+import { useSelector } from 'react-redux';
 
 function Home() {
+  const topCities = useSelector((state) => state.cityData.allCities);
+
   useEffect(() => {
     // fetch cities
+    getTopCities();
   }, []);
 
   return (
@@ -19,12 +24,15 @@ function Home() {
       <div className="home__section">
         <h1 className="home__section-title">explore nearby</h1>
         <div className="home__section-contents home__section-contents--explore">
-          <CityCard
-            cityName="CASA-BLANCA"
-            src="https://www.visitmorocco.com/sites/default/files/styles/thumbnail_destination_background_top5/public/thumbnails/image/la-mosquee-hassan-ii-au-coucher-du-soleil-a-casablanca-maroc.jpg?itok=-kg3FRws"
-            numberOfPostings={10}
-          />
-          <CityCard
+          {topCities &&
+            topCities.map((city) => (
+              <CityCard
+                cityName={city.nameCity}
+                src="https://www.visitmorocco.com/sites/default/files/styles/thumbnail_destination_background_top5/public/thumbnails/image/la-mosquee-hassan-ii-au-coucher-du-soleil-a-casablanca-maroc.jpg?itok=-kg3FRws"
+                numberOfPostings={city.counter}
+              />
+            ))}
+          {/* <CityCard
             cityName="TANGER"
             src="https://www.h24info.ma/wp-content/uploads/2019/02/tanger.png"
             numberOfPostings={3}
@@ -58,7 +66,7 @@ function Home() {
             cityName="DAKHLA"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpAahDXAfhIoN6yzCLfirWtcpgGBTG97Z0Hs7TLC8nRLZsv6jX8u3U207--ZyaqZFf9Ik&usqp=CAU"
             numberOfPostings={100}
-          />
+          /> */}
         </div>
       </div>
 

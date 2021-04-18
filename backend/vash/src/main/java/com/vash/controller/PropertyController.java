@@ -79,7 +79,7 @@ public class PropertyController {
 			propertyVos = iPropertyService.findByCityId(Long.valueOf(idCity));
 		}
 		if (ObjectUtils.isEmpty(propertyVos)) {
-			return new ResponseEntity<>("doesn't exist", HttpStatus.OK);
+			return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(propertyVos, HttpStatus.OK);
 	}
@@ -91,7 +91,7 @@ public class PropertyController {
 		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
 		propertyVos = iPropertyService.findByCityIdAndVisibleTrue(Long.valueOf(idCity));
 		if (ObjectUtils.isEmpty(propertyVos)) {
-			return new ResponseEntity<>("doesn't exist", HttpStatus.OK);
+			return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
 		}
 		return new ResponseEntity<>(propertyVos, HttpStatus.OK);
 	}

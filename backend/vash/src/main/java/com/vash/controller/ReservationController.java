@@ -28,7 +28,7 @@ public class ReservationController {
 	@Autowired
 	private IPropertyService iPropertyService;
 	
-	@PostMapping(value="/save/{numberPersons}/{dateStart}/{dateEnd}/{status}/{idProperty}/{idUser}")
+	@PostMapping(value="/save")
 	public ResponseEntity<Object> save(@RequestParam(value="numberPersons")String numberPersons,@RequestParam(value="dateStart")Date dateStart,@RequestParam(value="dateEnd") Date dateEnd,@RequestParam(value="status")String status,@RequestParam(value="idProperty")String idProperty,@RequestParam(value="idUser")String idUser){
 
 		ReservationVo reservationVo=new ReservationVo();
