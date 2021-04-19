@@ -1,23 +1,18 @@
 package com.vash;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.vash.domaine.CityVo;
-import com.vash.service.ICityService;
-
 @SpringBootApplication
 public class VashApplication implements CommandLineRunner {
 
-	@Autowired
-	private ICityService iCityService;
-	
+//	@Autowired
+//	private ICityService iCityService;
+//	@Autowired
+//	private IReservationService iReservationService;
 
 
 	public static void main(String[] args) {
@@ -32,13 +27,18 @@ public class VashApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		
 		//iMailService.sendEmail("mabrouk.ilias@gmail.com", "test", "Hello toto <>");
 
-		List<CityVo> cityVos=iCityService.findAll();
+//		List<ReservationVo> reservationVos = new ArrayList<ReservationVo>();
+//			reservationVos = iReservationService.findByPropertyId(Long.valueOf(1));
+			
 		
-		for (CityVo cityVo : cityVos) {
-			System.out.println(cityVo.getNameCity());
-		}
+		//List<CityVo> cityVos=iCityService.findAll();
+		
+//		for (ReservationVo reservationVo : reservationVos) {
+//			System.out.println(reservationVo.getId() +" "+reservationVo.getDateEnd());
+//		}
 		
 //		UserVo userVo =new UserVo();
 //		userVo.setEmail("hhhh");
