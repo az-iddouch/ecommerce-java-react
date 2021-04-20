@@ -69,7 +69,7 @@ export default function Orders() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <h2>Orders</h2>
+      <h2>Reservations</h2>
       <Table size="small">
         <TableHead>
           <TableRow>

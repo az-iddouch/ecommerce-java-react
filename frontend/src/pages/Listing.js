@@ -26,6 +26,7 @@ import {
   setEndDate,
 } from '../features/commonSlice';
 import { makeReservation } from '../features/reservationSlice';
+import { Alert, AlertTitle } from '@material-ui/lab';
 
 function Listing() {
   const history = useHistory();
@@ -36,9 +37,12 @@ function Listing() {
   );
   const startDate = useSelector((state) => state.commonState.startDate);
   const endDate = useSelector((state) => state.commonState.endDate);
+  const success = useSelector((state) => state.reservationState.success);
   const selectedPropertyId = useSelector(
     (state) => state.commonState.selectedPropertyId
   );
+  const diffTime = Math.abs(new Date(endDate) - new Date(startDate));
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
   const handleStartDateChange = (date) => {
     dispatch(setStartDate(date.toString()));
@@ -156,6 +160,7 @@ function Listing() {
             <h2>
               MAD {listing.price} <span>/night</span>
             </h2>
+            <p>Total : MAD {diffDays * listing.price}</p>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDatePicker
                 disableToolbar
@@ -195,6 +200,12 @@ function Listing() {
               }
             />
             <Button onClick={makeReservationHandker}>Reserve</Button>
+            {success && (
+              <Alert severity="success" style={{ marginTop: '6px' }}>
+                <AlertTitle>Success</AlertTitle>
+                {success}
+              </Alert>
+            )}
           </div>
         </div>
       </div>

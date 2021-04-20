@@ -4,17 +4,22 @@ import { setNotification } from '../features/commonSlice';
 
 const reservationSlice = createSlice({
   name: 'reservationState',
-  initialState: { reservation: null },
+  initialState: { reservation: null, success: null },
   reducers: {
     setReservation: {
       reducer(state, { payload }) {
         state.reservation = payload;
       },
     },
+    setSuccess: {
+      reducer(state, { payload }) {
+        state.success = payload;
+      },
+    },
   },
 });
 
-export const { setReservation } = reservationSlice.actions;
+export const { setReservation, setSuccess } = reservationSlice.actions;
 export default reservationSlice.reducer;
 
 export function makeReservation(
@@ -36,6 +41,7 @@ export function makeReservation(
       })
       .then((res) => {
         dispatch(setReservation(res.data));
+        dispatch(setSuccess('Your reservation was successful !'));
       })
       .catch((err) => {
         if (err.response.status === 403) {

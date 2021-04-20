@@ -41,7 +41,7 @@ public class ReservationServiceImpl implements IReservationService {
 	@Override
 	@LogTracer
 	public ReservationVo save(ReservationVo reservationVo) {
-		ReservationVo reservationVo1 = ReservationConvert.toVo(iReservationRepository.save(ReservationConvert.toBo(reservationVo)));
+		ReservationVo reservationVo1 = ReservationConvert.toVo2(iReservationRepository.save(ReservationConvert.toBo2(reservationVo)));
 		if(!ObjectUtils.isEmpty(reservationVo1)){
 			iMailService.sendEmail(reservationVo1.getProperty().getUser().getEmail(), Constants.EMAIL_SUBJECT, iMailService.createMailContent(reservationVo1) );
 		}

@@ -125,3 +125,9 @@
   color: var(--color-accent);
   background-color: rgb(238, 238, 238);
 }
+
+.listing__content--right-card > p {
+  margin-top: 12px;
+  color: gray;
+  font-size: 1.1rem;
+}

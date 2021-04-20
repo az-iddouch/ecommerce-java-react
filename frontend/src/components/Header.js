@@ -6,11 +6,20 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setShowSearch } from '../features/commonSlice';
+import { login } from '../features/authSlice';
 
 function Header() {
   const user = useSelector((state) => state.auth.user);
   const showSearch = useSelector((state) => state.commonState.showSearch);
   const dispatch = useDispatch();
+
+  function handleLogout() {
+    if (localStorage.getItem('user') != null) {
+      localStorage.removeItem('user');
+    }
+    dispatch(login(null));
+  }
+
   return (
     <div className="header">
       <div className="header__logo">
@@ -30,7 +39,8 @@ function Header() {
       </div>
       {user ? (
         <div className="header__right">
-          <Link>{user.fullName}</Link>
+          <Link to="/dashboard">{user.fullName}</Link>
+          <p onClick={handleLogout}>Logout</p>
           <Avatar />
         </div>
       ) : (
