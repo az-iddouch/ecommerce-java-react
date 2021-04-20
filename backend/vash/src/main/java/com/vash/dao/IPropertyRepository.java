@@ -13,4 +13,5 @@ public interface IPropertyRepository extends JpaRepository<Property, Long>{
 	List<Property> findByCityIdAndVisibleTrue(Long idCity);
 	List<Property> findByCityIdAndVisibleTrueAndNumberMaxPersons(Long id,Integer numberMaxPersons);
 	List<Property> findByTypePropertyId(Long id); 
+	List<Property> findByUserId(Long id);
 }

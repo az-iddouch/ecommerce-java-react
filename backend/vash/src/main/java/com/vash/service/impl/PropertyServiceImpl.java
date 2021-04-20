@@ -107,6 +107,7 @@ public class PropertyServiceImpl implements IPropertyService {
 	}
 
 	@Override
+	@LogTracer
 	public boolean deleteById(Long id) {
 		boolean checked = true;
 		iPropertyRepository.deleteById(id);
@@ -118,8 +119,15 @@ public class PropertyServiceImpl implements IPropertyService {
 	}
 
 	@Override
+	@LogTracer
 	public List<PropertyVo> findByTypePropertyId(Long id) {
 		return PropertyConvert.toListVo(iPropertyRepository.findByTypePropertyId(id));
+	}
+
+	@Override
+	@LogTracer
+	public List<PropertyVo> findByUserId(Long id) {
+		return PropertyConvert.toListVo(iPropertyRepository.findByUserId(id));
 	}
 
 }
