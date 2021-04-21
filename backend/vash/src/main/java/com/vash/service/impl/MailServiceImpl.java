@@ -34,7 +34,7 @@ public class MailServiceImpl implements IMailService {
 				.append("\nVous venez d'avoir une reservation pour votre ")
 				.append(reservationVo.getProperty().getTypeProperty().getType())
 				.append("[" + reservationVo.getProperty().getCity().getNameCity() + " / "
-						+ reservationVo.getProperty().getAddress() + "] , ")
+						+ reservationVo.getProperty().getAddress().getAddress() + "] , ")
 				.append("du " + MethodUtils.parseDateInLocalDate(reservationVo.getDateStart(), "yyyy-MM-dd")
 						+ " jusqu'à " + MethodUtils.parseDateInLocalDate(reservationVo.getDateEnd(), "yyyy-MM-dd"))
 				.append(" pour " + reservationVo.getNumberPersons() + " personnes")

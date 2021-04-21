@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +26,7 @@ public class DashbordController {
 	@Autowired
 	private IPropertyService iPropertyService;
 	
-	@PostMapping("/dashboard")
+	@GetMapping("/")
 	public ResponseEntity<?> dashboard(Principal principal){
 		List<PropertyVo> propertyVos=new ArrayList<PropertyVo>();
 		UserVo userVo=iUserService.findByUserName(principal.getName());

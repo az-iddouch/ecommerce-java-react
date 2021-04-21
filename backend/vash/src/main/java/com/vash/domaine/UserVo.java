@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class UserVo implements Serializable{
 	@Email(message = "You have to provide a valid email")
 	@NotBlank(message= "Email is required")
 	private String email;
+	@JsonIgnore
 	@NotBlank(message = "Username field is required")
 	private String userName;
 	@NotBlank(message = "Password field is required")

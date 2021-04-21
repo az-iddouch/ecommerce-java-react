@@ -127,7 +127,7 @@ public class PropertyServiceImpl implements IPropertyService {
 	@Override
 	@LogTracer
 	public List<PropertyVo> findByUserId(Long id) {
-		return PropertyConvert.toListVo(iPropertyRepository.findByUserId(id));
+		return PropertyConvert.toListVoDashoard(iPropertyRepository.findByUserId(id));
 	}
 
 }

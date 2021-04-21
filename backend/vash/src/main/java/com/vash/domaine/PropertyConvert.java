@@ -88,6 +88,8 @@ public class PropertyConvert {
 		return propertyVos;
 	}
 
+
+
 	// ---------
 	/** reservation desactive **/
 	public static Property toBo2(PropertyVo propertyVo) {
@@ -164,6 +166,37 @@ public class PropertyConvert {
 		if (!ObjectUtils.isEmpty(propertys)) {
 			for (Property property : propertys) {
 				propertyVos.add(toVo2(property));
+			}
+		}
+
+		return propertyVos;
+	}
+
+
+
+	/** dashboard toVo **/
+	public static PropertyVo toVoDashboard(Property property) {
+		PropertyVo propertyVo = null;
+		if (!ObjectUtils.isEmpty(property)) {
+			propertyVo = new PropertyVo();
+			propertyVo.setId(property.getId());
+			propertyVo.setPrice(property.getPrice());
+			propertyVo.setVisible(property.getVisible());
+			propertyVo.setReservations(ReservationConvert.toListVoDashboard(property.getReservations()));
+			propertyVo.setTypeProperty(TypePropertyConverter.toVo(property.getTypeProperty()));
+			propertyVo.setCity(CityConverter.toVo(property.getCity()));
+			property.setAddress(AddressConverter.toBo(propertyVo.getAddress()));
+		}
+
+		return propertyVo;
+	}
+
+//	dashboard VOs
+	public static List<PropertyVo> toListVoDashoard(List<Property> propertys) {
+		List<PropertyVo> propertyVos = new ArrayList<PropertyVo>();
+		if (!ObjectUtils.isEmpty(propertys)) {
+			for (Property property : propertys) {
+				propertyVos.add(toVoDashboard(property));
 			}
 		}
 

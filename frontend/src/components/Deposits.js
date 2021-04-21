@@ -17,9 +17,9 @@ export default function Deposits() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <h2>Deposits</h2>
+      <h2>Total earnings</h2>
       <Typography component="p" variant="h4">
-        $3,024.00
+        DH 3,024.00
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
         on 15 March, 2019

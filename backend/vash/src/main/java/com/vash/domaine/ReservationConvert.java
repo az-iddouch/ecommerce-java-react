@@ -127,4 +127,33 @@ public class ReservationConvert {
 		return reservationVos;
 	}
 
+
+	/** user active - dashboard **/
+	public static ReservationVo toVoDashboard(Reservation reservation) {
+		ReservationVo reservationVo = null;
+		if (!ObjectUtils.isEmpty(reservation)) {
+			reservationVo = new ReservationVo();
+			reservationVo.setId(reservation.getId());
+			reservationVo.setDateEnd(reservation.getDateEnd());
+			reservationVo.setDateStart(reservation.getDateStart());
+			reservationVo.setNumberPersons(reservation.getNumberPersons());
+			reservationVo.setStatus(reservation.getStatus());
+			reservationVo.setUser(UserConverter.toVo3(reservation.getUser()));
+		}
+
+		return reservationVo;
+	}
+
+	/** user active **/
+	public static List<ReservationVo> toListVoDashboard(List<Reservation> reservations) {
+		List<ReservationVo> reservationVos = new ArrayList<ReservationVo>();
+		if (!ObjectUtils.isEmpty(reservations)) {
+			for (Reservation reservation : reservations) {
+				reservationVos.add(toVoDashboard(reservation));
+			}
+		}
+
+		return reservationVos;
+	}
+
 }
